@@ -9,6 +9,7 @@ class DecaySimulation:
     half_life: float
     time_pts: np.ndarray
     isotope_name: str 
+    half_life_unit: str 
 
     def __post_init__(self):
         self.decay_const = np.log(2) / self.half_life
@@ -76,7 +77,7 @@ class DecaySimulation:
         # plot remaining and decayed values on primary y-axis
         ax1.plot(self.time_pts, amt_remaining, 'g-', label='Remaining Material')
         ax1.plot(self.time_pts, amt_decayed, 'r-', label='Decayed Material')
-        ax1.set_xlabel('Time (seconds)')
+        ax1.set_xlabel(f'Time ({self.half_life_unit})')
         ax1.set_ylabel('Amount of Material')
 
         # add vertical line at half-life point
