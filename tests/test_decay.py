@@ -48,6 +48,23 @@ def test_iodine_131_two_half_lives():
     # two half-lives
     assert np.isclose(remaining[2], initial_amount/4, rtol=0.01)
 
+def test_bismuth_193m_two_half_lives():
+    """
+    Test Bi-193m decay after 2 half-lives.
+    """
+    initial_amount = 1000
+    time_points = np.array([0, 2 * BISMUTH_193M.half_life])
+
+    sim = DecaySimulation(
+        init_amt=initial_amount,
+        half_life=BISMUTH_193M.half_life,
+        time_pts=time_points
+    )
+
+    _, remaining = sim.calculate_decay()
+
+    # two half-lives
+    assert np.isclose(remaining[1], initial_amount/4, rtol=0.01)
 
 def test_time_conversion():
     sim = DecaySimulation(
