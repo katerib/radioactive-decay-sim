@@ -25,7 +25,8 @@ Radioactive decay is a fundamental process in nuclear physics where unstable ato
 
 - [ ] Calcuate decayed and undecayed Nuclei using Half-life (s)
 - [ ] Plot the number of decayed and undecayed Nuclei on a graph
-- [ ] Potential future: specific isotope selection and decay chain modeling
+- [ ] Potential feature: specific isotope selection and decay chain modeling
+- [ ] Potential feature: simulate gamma radiation
 
 ## Installation
 
