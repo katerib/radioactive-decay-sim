@@ -34,7 +34,15 @@ TODO: installation and usage instructions (quick notes, will flush these out in 
 
 Clone repo
 
-cd into dir
+```sh
+git clone https://github.com/katerib/radioactive-decay-sim.git
+```
+
+cd into directory
+
+```sh
+cd ./radioactive-decay-sim/
+```
 
 Create virtual environment: 
 ```sh
