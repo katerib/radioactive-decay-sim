@@ -1,7 +1,6 @@
 colorama==0.4.6
 contourpy==1.3.1
 cycler==0.12.1
--e git+https://github.com/katerib/radioactive-decay-sim.git@0d6b440b61094c9e7e6b4a0bd6ba958a2252acab#egg=decay_simulator
 fonttools==4.55.8
 iniconfig==2.0.0
 kiwisolver==1.4.8
