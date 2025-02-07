@@ -32,39 +32,46 @@ Radioactive decay is a fundamental process in nuclear physics where unstable ato
 
 TODO: installation and usage instructions (quick notes, will flush these out in future)
 
-clone repo
+Clone repo
 
 cd into dir
 
-create virtual environment: 
+Create virtual environment: 
+```sh
+python -m venv venv
+```
 
-        python -m venv venv
-
-activate virtual environment:
+Activate virtual environment:
 
 * Windows
-
-        venv/Scripts/activate
+```ps
+venv/Scripts/activate
+```
 
 * macOS
-
-        source venv/bin/activate
+```sh
+source venv/bin/activate
+```
 
 install dependencies
-
-        pip install -r requirements.txt
+```sh
+pip install -r requirements.txt
+```
 
 install package in development mode
-
-        pip install -e .
+```sh
+pip install -e .
+```
 
 * If you want to install with development dependencies, run the following instead: 
-
-        pip install -e ".[dev]"
+```sh
+pip install -e ".[dev]"
+```
 
 ### Running Tests
-
-    pytest tests/
+```sh
+pytest tests/
+```
 
 ### Development Notes
 
