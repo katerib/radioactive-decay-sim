@@ -14,7 +14,8 @@ def test_carbon_14_one_half_life():
     sim = DecaySimulation(
         init_amt=initial_amount,
         half_life=CARBON_14.half_life,
-        time_pts=time_points
+        time_pts=time_points,
+        isotope_name=CARBON_14.name
     )
 
     decayed, remaining = sim.calculate_decay()
@@ -37,7 +38,8 @@ def test_iodine_131_two_half_lives():
     sim = DecaySimulation(
         init_amt=initial_amount, 
         half_life=IODINE_131.half_life,
-        time_pts=time_points
+        time_pts=time_points,
+        isotope_name=IODINE_131.name
     )
 
     _, remaining = sim.calculate_decay()
@@ -58,7 +60,8 @@ def test_bismuth_193m_two_half_lives():
     sim = DecaySimulation(
         init_amt=initial_amount,
         half_life=BISMUTH_193M.half_life,
-        time_pts=time_points
+        time_pts=time_points,
+        isotope_name=BISMUTH_193M.name
     )
 
     _, remaining = sim.calculate_decay()
@@ -88,7 +91,8 @@ def test_decay_rate():
     sim = DecaySimulation(
         init_amt=initial_amount,
         half_life=half_life,
-        time_pts=time_points
+        time_pts=time_points,
+        isotope_name="TestIsotope"
     )
 
     decay_rate = sim.calc_decay_rate()
@@ -102,7 +106,8 @@ def test_edge_cases():
     sim = DecaySimulation(
         init_amt=0,
         half_life=100,
-        time_pts=np.array([0, 50])
+        time_pts=np.array([0, 50]),
+        isotope_name="TestIsotope"
     )
 
     decayed, remaining = sim.calculate_decay()
@@ -114,7 +119,8 @@ def test_edge_cases():
     sim = DecaySimulation(
         init_amt=1000,
         half_life=100,
-        time_pts=np.array([0])
+        time_pts=np.array([0]),
+        isotope_name="TestIsotope"
     )
 
     decayed, remaining = sim.calculate_decay()

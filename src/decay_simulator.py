@@ -8,6 +8,7 @@ class DecaySimulation:
     init_amt: float 
     half_life: float
     time_pts: np.ndarray
+    isotope_name: str 
 
     def __post_init__(self):
         self.decay_const = np.log(2) / self.half_life
@@ -73,12 +74,24 @@ class DecaySimulation:
         fig, ax1 = plt.subplots(figsize=(10, 6))
 
         # plot remaining and decayed values on primary y-axis
+        ax1.plot(self.time_pts, amt_remaining, 'g-', label='Remaining Material')
+        ax1.plot(self.time_pts, amt_decayed, 'r-', label='Decayed Material')
+        ax1.set_xlabel('Time (seconds)')
+        ax1.set_ylabel('Amount of Material')
+
+        # add vertical line at half-life point
+        half_life_time = self.half_life
+        ax1.axvline(x=half_life_time, color='k', linestyle='--', label='Half-Life')
+        ax1.legend(loc='lower right')
+
+        # add: title and labels with units ; grid ; legend
+        plt.title(f'Radioactive Decay Simulation for {self.isotope_name}')
+        ax1.grid(True)
+        fig.tight_layout()
+        plt.show()
+
         # use different lines/colors, include labels 
 
         # create secondary y-axis for decay rate (diff color)
-
-        # add vertical line at half-life point ? or some type of marker
-
-        # add: title and labels with units ; grid ; legend
 
         pass
