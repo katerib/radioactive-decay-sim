@@ -1,5 +1,6 @@
 import numpy as np 
 import matplotlib.pyplot as plt
+import random
 
 from dataclasses import dataclass
 
@@ -10,6 +11,7 @@ class DecaySimulation:
     time_pts: np.ndarray
     isotope_name: str 
     half_life_unit: str 
+    noise_percentage: bool
 
     def __post_init__(self):
         self.decay_const = np.log(2) / self.half_life
@@ -24,6 +26,8 @@ class DecaySimulation:
         """
         exp_dt = self.decay_const * self.time_pts
         amt_remaining = self.init_amt * np.exp(-exp_dt)
+        noise = random.uniform(-self.noise_percentage * amt_remaining, self.noise_percentage * amt_remaining)
+        amt_remaining = amt_remaining + noise
         amt_decayed = self.init_amt - amt_remaining
     
         return amt_decayed, amt_remaining
