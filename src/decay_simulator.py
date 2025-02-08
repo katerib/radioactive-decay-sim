@@ -86,7 +86,7 @@ class DecaySimulation:
 
         # add vertical line at half-life point
         half_life_time = self.half_life
-        ax1.axvline(x=half_life_time, color='k', linestyle='--', label='Half-Life')
+        ax1.axvline(x=half_life_time, color='k', linestyle='--', label='First Half-Life')
         ax1.legend(loc='lower right')
 
         # add: title and labels with units ; grid ; legend
