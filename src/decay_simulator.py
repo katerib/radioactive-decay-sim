@@ -11,7 +11,7 @@ class DecaySimulation:
     time_pts: np.ndarray
     isotope_name: str 
     half_life_unit: str 
-    noise_percentage: bool
+    noise_percentage: int 
 
     def __post_init__(self):
         self.decay_const = np.log(2) / self.half_life
