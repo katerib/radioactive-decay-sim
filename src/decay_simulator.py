@@ -26,7 +26,7 @@ class DecaySimulation:
         """
         exp_dt = self.decay_const * self.time_pts
         amt_remaining = self.init_amt * np.exp(-exp_dt)
-        noise = random.uniform(-self.noise_percentage * amt_remaining, self.noise_percentage * amt_remaining)
+        noise = np.random.normal(0, (self.noise_percentage / 100) * amt_remaining, size=self.time_pts.size)
         amt_remaining = amt_remaining + noise
         amt_decayed = self.init_amt - amt_remaining
     
