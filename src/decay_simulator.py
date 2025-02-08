@@ -79,8 +79,8 @@ class DecaySimulation:
         fig, ax1 = plt.subplots(figsize=(10, 6))
 
         # plot remaining and decayed values on primary y-axis
-        ax1.plot(self.time_pts, amt_remaining, 'g-', label='Remaining Material')
-        ax1.plot(self.time_pts, amt_decayed, 'r-', label='Decayed Material')
+        ax1.plot(self.time_pts, amt_remaining, 'g-', marker="o", label='Remaining Material')
+        ax1.plot(self.time_pts, amt_decayed, 'r-', marker="o", label='Decayed Material')
         ax1.set_xlabel(f'Time ({self.half_life_unit })')
         ax1.set_ylabel('Amount of Material')
 
