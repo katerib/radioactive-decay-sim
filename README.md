@@ -54,6 +54,8 @@ python -m venv venv
 
 Activate virtual environment:
 
+*Note: You have to activate the venv for each instance of your shell*
+
 * Windows
 ```ps
 venv/Scripts/activate
