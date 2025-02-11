@@ -81,14 +81,19 @@ class DecaySimulation:
         # calculate decay values
         amt_decayed, amt_remaining = self.calculate_decay()
 
+        # predict gamma decay values
+        gamma_decay = self.calc_gamma_emissions()
+
         # calculate decay rate for secondary y-axis
         activity = self.calc_activity()
+
 
         fig, ax1 = plt.subplots(figsize=(10, 6))
 
         # plot remaining and decayed values on primary y-axis
         ax1.plot(self.time_pts, amt_remaining, 'dodgerblue', marker='.', label='Remaining Material')
         ax1.plot(self.time_pts, amt_decayed, 'red', marker='.', label='Decayed Material')
+        ax1.plot(self.time_pts, gamma_decay, 'green', marker='.', label='Gamma Decay')
         ax1.set_xlabel(f'Time ({self.half_life_unit })')
         ax1.set_ylabel('Amount of Material')
 
