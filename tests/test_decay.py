@@ -113,7 +113,7 @@ def test_time_conversion():
     assert np.isclose(sim.conv_time(1, 'd', 's'), 86400, rtol=0.01)
 
 
-def test_decay_rate():
+def test_activity():
     initial_amount = 1000
     half_life = 100
     time_points = np.array([0])
@@ -127,10 +127,10 @@ def test_decay_rate():
         noise_percentage=0.00
     )
 
-    decay_rate = sim.calc_decay_rate()
+    activity = sim.calc_activity()
     expected_rate = (np.log(2) / half_life) * initial_amount
 
-    assert np.isclose(decay_rate[0], expected_rate, rtol=0.01)
+    assert np.isclose(activity[0], expected_rate, rtol=0.01)
 
 
 def test_edge_cases():

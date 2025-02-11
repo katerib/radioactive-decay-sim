@@ -31,7 +31,7 @@ class DecaySimulation:
     
         return amt_decayed, amt_remaining
     
-    def calc_decay_rate(self):
+    def calc_activity(self):
         """
         Calculate decay rates for all time points.
         
@@ -72,7 +72,7 @@ class DecaySimulation:
         amt_decayed, amt_remaining = self.calculate_decay()
 
         # calculate decay rate for secondary y-axis
-        decay_rate = self.calc_decay_rate()
+        activity = self.calc_activity()
 
         fig, ax1 = plt.subplots(figsize=(10, 6))
 
@@ -92,7 +92,7 @@ class DecaySimulation:
         # create secondary y-axis for decay rate (diff color)
         _, ax2 = plt.subplots(figsize=(10, 6))
 
-        ax2.plot(self.time_pts, decay_rate, 'black', marker='.', label='Activity')
+        ax2.plot(self.time_pts, activity, 'black', marker='.', label='Activity')
         ax2.set_xlabel(f'Time ({self.half_life_unit})')
         ax2.set_ylabel('Activity (Bq)')
         ax2.grid(True)
