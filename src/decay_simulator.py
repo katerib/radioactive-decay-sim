@@ -11,6 +11,7 @@ class DecaySimulation:
     isotope_name: str 
     half_life_unit: str 
     noise_percentage: int 
+    gamma_emission_probability: float
 
     def __post_init__(self):
         self.decay_const = np.log(2) / self.half_life
@@ -41,6 +42,15 @@ class DecaySimulation:
         _, remaining = self.calculate_decay()
         return self.decay_const * remaining
     
+    def calc_gamma_emissions(self):
+        amt_decayed, _ = self.calculate_decay()
+        amt_decayed_int = amt_decayed.astype(int)
+        gamma_probability = self.gamma_emission_probability
+
+        gamma_emissions = np.random.binomial(n=amt_decayed_int, p=gamma_probability)
+
+        return gamma_emissions
+
     def conv_time(self, value:float, from_unit:str, to_unit:str):
         """
         Convert time between units (s, d, y)
