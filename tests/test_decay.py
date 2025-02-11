@@ -1,8 +1,8 @@
 import pytest 
 import numpy as np
 
-from src.decay_simulator import DecaySimulation
-from src.isotopes import *
+from app.decay_simulator import DecaySimulation
+from app.isotopes import *
 
 def test_carbon_14_one_half_life():
     """
