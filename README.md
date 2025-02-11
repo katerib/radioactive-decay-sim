@@ -114,6 +114,16 @@ pip install -e ".[dev]"
 pytest tests/
 ```
 
+### Running the App
+
+From the root of your directory, start the app:
+
+```sh
+python run.py
+```
+
+You can now access your Flask app: [localhost:5000](http://127.0.0.1:5000/)
+
 ## Development Notes
 
 - The package is installed in editable mode (`-e` flag), so code changes will be reflected immediately without reinstallation.
