@@ -114,3 +114,5 @@ class DecaySimulation:
             spine.set_color(grey_400)
                 
         plt.tight_layout()
+
+        return amt_decayed, activity, amt_remaining, gamma_decay  

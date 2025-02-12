@@ -45,17 +45,13 @@ def simulate():
         gamma_emission_probability=isotope.gamma_emission_probability / 100             # convert percent to decimal
     )
     
-    sim.plot_decay()
+    amt_decayed, decay_rate, amt_remaining, gamma_emissions = sim.plot_decay()
     
     img = io.BytesIO()
     plt.savefig(img, format='png', bbox_inches='tight')
     img.seek(0)
     plot_url = base64.b64encode(img.getvalue()).decode()
     plt.close()
-    
-    amt_decayed, amt_remaining = sim.calculate_decay()
-    decay_rate = sim.calc_activity()
-    gamma_emissions = sim.calc_gamma_emissions()
     
     data_points = []
     for i in range(len(time_pts)):
