@@ -199,6 +199,10 @@ button:disabled {
     cursor: not-allowed;
 }
 
+#dataPointsButton {
+    margin-bottom: 1rem;
+} 
+
 /* TABLE */
 table {
     width: 100%;

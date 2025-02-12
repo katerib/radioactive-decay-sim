@@ -5,6 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+dataPointsButton = document.getElementById('dataPointsButton');
+
+dataPointsButton.addEventListener('click', () => {
+    const table = document.getElementById('dataTable');
+    if (table.style.display === 'none') {
+        table.style.display = 'block';
+        dataPointsButton.textContent = 'Hide Data Points';
+    } else {
+        table.style.display = 'none';
+        dataPointsButton.textContent = 'Show Data Points';
+    }
+});
+
 function initializeSimulationForm(form) {
     form.addEventListener('submit', handleSimulationSubmit);
 }
