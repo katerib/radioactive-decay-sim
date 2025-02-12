@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from dataclasses import dataclass
+from .static.css.plot_colors import *
 
 @dataclass 
 class DecaySimulation:
@@ -44,7 +45,7 @@ class DecaySimulation:
     
     def calc_gamma_emissions(self):
         amt_decayed, _ = self.calculate_decay()
-        amt_decayed_int = amt_decayed.astype(int)
+        amt_decayed_int = np.maximum(amt_decayed, 0).astype(int)            # ensure positive value
         gamma_probability = self.gamma_emission_probability
 
         gamma_emissions = np.random.binomial(n=amt_decayed_int, p=gamma_probability)
@@ -70,51 +71,46 @@ class DecaySimulation:
     def plot_decay(self):
         """
         Plot the radioactive decay process showing both the amount of material remaining and the amount that has decayed over time.
-
-        Plot should include:
-            - two line plots (remaining and decayed material)
-            - decay rate plot as secondary y-axis
-            - labels, legend
-            - half-life marker
-            - grid lines (?)
         """
-        # calculate decay values
+        plt.style.use('dark_background')
+        
         amt_decayed, amt_remaining = self.calculate_decay()
-
-        # predict gamma decay values
         gamma_decay = self.calc_gamma_emissions()
-
-        # calculate decay rate for secondary y-axis
         activity = self.calc_activity()
 
-
         fig, ax1 = plt.subplots(figsize=(10, 6))
+        fig.patch.set_facecolor(table_grey)
+        ax1.set_facecolor(table_grey)
+        
+        ax1.plot(self.time_pts, amt_remaining, color=cyan, marker='.', linestyle='-', label='Remaining Material')
+        ax1.plot(self.time_pts, amt_decayed, color=coral, marker='.', linestyle='--', label='Decayed Material')
+        ax1.plot(self.time_pts, gamma_decay, color=yellow, marker='.', linestyle=':', label='Gamma Decay')
 
-        # plot remaining and decayed values on primary y-axis
-        ax1.plot(self.time_pts, amt_remaining, 'dodgerblue', marker='.', label='Remaining Material')
-        ax1.plot(self.time_pts, amt_decayed, 'red', marker='.', label='Decayed Material')
-        ax1.plot(self.time_pts, gamma_decay, 'green', marker='.', label='Gamma Decay')
-        ax1.set_xlabel(f'Time ({self.half_life_unit })')
-        ax1.set_ylabel('Amount of Material')
-
-        # add vertical line at half-life point
+        ax1.set_xlabel(f'Time ({self.half_life_unit})', color=white)
+        ax1.set_ylabel('Amount of Material', color=white)
+        ax1.tick_params(colors=white)
+        
+        ax2 = ax1.twinx()
+        ax2.set_ylabel('Activity (Bq)', color=grey_400)
+        ax2.tick_params(colors=grey_400)
+        
         half_life_time = self.half_life
-        ax1.axvline(x=half_life_time, color='k', linestyle='--', label='First Half-Life')
+        ax1.axvline(x=half_life_time, color=white, 
+                    linestyle='--', label='First Half-Life')
 
-        ax1.grid(True)
-        ax1.legend(loc='best')
+        lines1, labels1 = ax1.get_legend_handles_labels()
+        lines2, labels2 = ax2.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2, labels1 + labels2, 
+                    loc='best', facecolor=table_grey, labelcolor=white)
 
-        # create secondary y-axis for decay rate (diff color)
-        _, ax2 = plt.subplots(figsize=(10, 6))
-
-        ax2.plot(self.time_pts, activity, 'black', marker='.', label='Activity')
-        ax2.set_xlabel(f'Time ({self.half_life_unit})')
-        ax2.set_ylabel('Activity (Bq)')
-        ax2.grid(True)
-        ax2.legend(loc='best')
-        fig.tight_layout()
-
-        plt.title(f'Radioactive Decay Simulation for {self.isotope_name}')
-        plt.show()
-
-        pass
+        ax1.grid(True, color=grey_400, alpha=0.2)
+        
+        plt.title(f'Radioactive Decay Simulation for {self.isotope_name}', 
+                    color=white)
+        
+        for spine in ax1.spines.values():
+            spine.set_color(white)
+        for spine in ax2.spines.values():
+            spine.set_color(grey_400)
+                
+        plt.tight_layout()
