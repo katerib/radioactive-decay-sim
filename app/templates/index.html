@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Radioactive Decay Simulator{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="header">
+        <h1>Radioactive Decay Simulator</h1>
+        <p>Select an isotope and parameters to simulate its decay process.</p>
+    </div>
+    <div class="card">
+        <form id="simulationForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="isotope">Isotope</label>
+                    <select id="isotope" name="isotope">
+                        {% for id, isotope in isotopes.items() %}
+                        <option value="{{ id }}">
+                            {{ isotope.name }} (T₁/₂: {{ isotope.half_life }} {{ isotope.half_life_unit }}, γ: {{ isotope.gamma_emission_probability }}%)
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="initial_amount">
+                        Initial Amount
+                        <span class="label-hint">(arbitrary units)</span>
+                    </label>
+                    <input type="number" id="initial_amount" name="initial_amount" value="100" min="1" step="1">
+                </div>
+                <div class="form-group">
+                    <label for="time_points">
+                        Time Points
+                        <span class="label-hint">(more points = smoother graph)</span>
+                    </label>
+                    <input type="number" id="time_points" name="time_points" value="50" min="10" max="1000" step="1">
+                </div>
+                <div class="form-group">
+                    <label for="noise">
+                        Noise Percentage
+                        <span class="label-hint">(simulates measurement uncertainty)</span>
+                    </label>
+                    <input type="number" id="noise" name="noise" value="5" min="0" max="20" step="1">
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="submit">Run Simulation</button>
+            </div>
+        </form>
+    </div>
+    <div id="results" style="display: none;">
+        <div class="card">
+            <h2>Decay Plot</h2>
+            <div class="plot-container">
+                <img id="decayPlot" alt="Decay Plot">
+                <div id="plotLoader" class="loading-overlay" style="display: none;">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Data Points</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Remaining</th>
+                            <th>Decayed</th>
+                            <th>Decay Rate</th>
+                            <th>Gamma Emissions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

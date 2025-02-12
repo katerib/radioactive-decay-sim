@@ -10,8 +10,10 @@
   - [Setting Up the Virtual Environment](#setting-up-the-virtual-environment)
   - [Installing Dependencies](#installing-dependencies)
   - [Running Tests](#running-tests)
+  - [Running the App](#running-the-app)
 - [Development Notes](#development-notes)
 - [Technologies](#technologies)
+- [Interface](#interface)
 - [Formulas](#formulas)
   - [Decay Constant](#decay-constant)
   - [Rate of Decay](#rate-of-decay)
@@ -114,6 +116,16 @@ pip install -e ".[dev]"
 pytest tests/
 ```
 
+### Running the App
+
+From the root of your directory, start the app:
+
+```sh
+python run.py
+```
+
+You can now access your Flask app: [localhost:5000](http://127.0.0.1:5000/)
+
 ## Development Notes
 
 - The package is installed in editable mode (`-e` flag), so code changes will be reflected immediately without reinstallation.
@@ -121,9 +133,32 @@ pytest tests/
 
 ## Technologies
 
-TODO: dependencies/libraries used
+Core Technologies: 
 
 - Python
+- Flask 
+- NumPy
+- Matplotlib
+- JavaScript
+- HTML/CSS
+
+Additional Python Libraries:
+
+- dataclasses (for data modeling)
+- io (for image handling)
+- base64 (for image encoding)
+
+## Interface
+
+### Decay Visualization
+
+![Decay Plot](./app/static/images/uranium-238_sim.PNG)
+*Interactive plot showing remaining material (cyan), decayed material (coral), and gamma emissions (yellow) over time for Uranium-238*
+
+### Data Table
+
+![Data Table](./app/static/images/uranium-238_table.PNG)
+*Detailed numerical data showing the simulation results at each time point for Uranium-238*
 
 ## Formulas
 
