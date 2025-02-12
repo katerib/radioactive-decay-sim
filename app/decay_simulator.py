@@ -11,6 +11,7 @@ class DecaySimulation:
     isotope_name: str 
     half_life_unit: str 
     noise_percentage: int 
+    gamma_emission_probability: float
 
     def __post_init__(self):
         self.decay_const = np.log(2) / self.half_life
@@ -31,7 +32,7 @@ class DecaySimulation:
     
         return amt_decayed, amt_remaining
     
-    def calc_decay_rate(self):
+    def calc_activity(self):
         """
         Calculate decay rates for all time points.
         
@@ -41,6 +42,15 @@ class DecaySimulation:
         _, remaining = self.calculate_decay()
         return self.decay_const * remaining
     
+    def calc_gamma_emissions(self):
+        amt_decayed, _ = self.calculate_decay()
+        amt_decayed_int = amt_decayed.astype(int)
+        gamma_probability = self.gamma_emission_probability
+
+        gamma_emissions = np.random.binomial(n=amt_decayed_int, p=gamma_probability)
+
+        return gamma_emissions
+
     def conv_time(self, value:float, from_unit:str, to_unit:str):
         """
         Convert time between units (s, d, y)
@@ -71,31 +81,40 @@ class DecaySimulation:
         # calculate decay values
         amt_decayed, amt_remaining = self.calculate_decay()
 
-        # calculate decay rate for secondary y-axis
-        decay_rate = self.calc_decay_rate()
+        # predict gamma decay values
+        gamma_decay = self.calc_gamma_emissions()
 
-        # create figure and primary axis
+        # calculate decay rate for secondary y-axis
+        activity = self.calc_activity()
+
+
         fig, ax1 = plt.subplots(figsize=(10, 6))
 
         # plot remaining and decayed values on primary y-axis
-        ax1.plot(self.time_pts, amt_remaining, 'g-', marker="o", label='Remaining Material')
-        ax1.plot(self.time_pts, amt_decayed, 'r-', marker="o", label='Decayed Material')
+        ax1.plot(self.time_pts, amt_remaining, 'dodgerblue', marker='.', label='Remaining Material')
+        ax1.plot(self.time_pts, amt_decayed, 'red', marker='.', label='Decayed Material')
+        ax1.plot(self.time_pts, gamma_decay, 'green', marker='.', label='Gamma Decay')
         ax1.set_xlabel(f'Time ({self.half_life_unit })')
         ax1.set_ylabel('Amount of Material')
 
         # add vertical line at half-life point
         half_life_time = self.half_life
         ax1.axvline(x=half_life_time, color='k', linestyle='--', label='First Half-Life')
-        ax1.legend(loc='lower right')
 
-        # add: title and labels with units ; grid ; legend
-        plt.title(f'Radioactive Decay Simulation for {self.isotope_name}')
         ax1.grid(True)
-        fig.tight_layout()
-        plt.show()
-
-        # use different lines/colors, include labels 
+        ax1.legend(loc='best')
 
         # create secondary y-axis for decay rate (diff color)
+        _, ax2 = plt.subplots(figsize=(10, 6))
+
+        ax2.plot(self.time_pts, activity, 'black', marker='.', label='Activity')
+        ax2.set_xlabel(f'Time ({self.half_life_unit})')
+        ax2.set_ylabel('Activity (Bq)')
+        ax2.grid(True)
+        ax2.legend(loc='best')
+        fig.tight_layout()
+
+        plt.title(f'Radioactive Decay Simulation for {self.isotope_name}')
+        plt.show()
 
         pass
