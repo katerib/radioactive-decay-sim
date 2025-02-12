@@ -1,20 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     const simulationForm = document.getElementById('simulationForm');
+    const dataPointsButton = document.getElementById('dataPointsButton');
+    const dataTable = document.getElementById('dataTable');
+
     if (simulationForm) {
         initializeSimulationForm(simulationForm);
     }
-});
 
-dataPointsButton = document.getElementById('dataPointsButton');
-
-dataPointsButton.addEventListener('click', () => {
-    const table = document.getElementById('dataTable');
-    if (table.style.display === 'none') {
-        table.style.display = 'block';
-        dataPointsButton.textContent = 'Hide Data Points';
-    } else {
-        table.style.display = 'none';
-        dataPointsButton.textContent = 'Show Data Points';
+    if (dataPointsButton && dataTable) {
+        dataPointsButton.addEventListener('click', () => {
+            dataTable.classList.toggle('hidden');
+            dataPointsButton.textContent = dataTable.classList.contains('hidden') 
+                ? 'Show Data Points' 
+                : 'Hide Data Points';
+        });
     }
 });
 
@@ -27,7 +26,6 @@ async function handleSimulationSubmit(e) {
     const form = e.target;
     const submitButton = form.querySelector('button[type="submit"]');
     
-    // had this in a JS template I made for submitting forms, we can remove if we want
     submitButton.disabled = true;
     submitButton.innerHTML = '<span class="spinner">↻</span> Running...';
     

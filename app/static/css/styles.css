@@ -223,12 +223,33 @@ button:disabled {
 
 #dataPointsButton {
     margin-bottom: 1rem;
-} 
+    width: auto;
+    display: inline-block;
+}
 
 /* TABLE */
-table {
+.table-container {
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+.table-container table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
+}
+
+.table-container th, 
+.table-container td {
+    width: 20%;  /* Since we have 5 columns */
+}
+
+#dataTable {
+    width: 100%;
+}
+
+#dataTable.hidden {
+    display: none;
 }
 
 th {
@@ -248,6 +269,17 @@ td {
 
 tr:hover {
     background-color: var(--table-hover);
+}
+
+@media (max-width: 768px) {
+    .table-container {
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+    
+    .table-container table {
+        min-width: 600px;
+    }
 }
 
 /* FOOTER */
