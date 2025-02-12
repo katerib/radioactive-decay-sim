@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block title %}About{% endblock %} {% block content
+%}
+
+<div class="content-wrapper">
+  <div class="header">
+    <h1>About the project</h1>
+    <div class="card" style="padding: 15px">
+      <h2>- Why?</h2>
+      <p>We found a shortage in good decay simulators</p>
+    </div>
+    <div class="card" style="padding: 15px">
+      <h2>- How does it work?</h2>
+      <p>Decay Constant:</p>
+      <p>$$λ = \frac{\ln(2)}{t_{1/2}}$$</p>
+      <br>
+      <p>Number of undecayed material:</p>
+      <p>$$N(t) = N_0 * e^{-\lambda t}$$</p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default"></script>
+
+  {% endblock %}
+</div>

@@ -80,6 +80,9 @@ nav {
 }
 
 nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 1rem;
 }
 
@@ -87,6 +90,16 @@ nav .container {
     color: var(--primary-blue);
     font-size: 1.25rem;
     font-weight: 400;
+    text-decoration: none;
+}
+
+.nav-links {
+    text-align: right;
+}
+
+.nav-links a {
+    margin-left: 1rem;
+    color: var(--primary-blue);
     text-decoration: none;
 }
 

@@ -67,3 +67,7 @@ def simulate():
         'plot': plot_url,
         'data': data_points
     })
+
+@main_bp.route('/about')
+def about():
+    return render_template('about.html')
