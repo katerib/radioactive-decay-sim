@@ -68,6 +68,11 @@ body {
     padding: 0 1rem;
 }
 
+a:link, a:visited {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
 /* NAVIGATION */
 nav {
     background-color: var(--nav-bg);
