@@ -152,12 +152,12 @@ Additional Python Libraries:
 
 ### Decay Visualization
 
-![Decay Plot](app\static\images\uranium-238_sim.PNG)
+![Decay Plot](.\app\static\images\uranium-238_sim.PNG)
 *Interactive plot showing remaining material (cyan), decayed material (coral), and gamma emissions (yellow) over time for Uranium-238*
 
 ### Data Table
 
-![Data Table](app\static\images\uranium-238_table.PNG)
+![Data Table](.\app\static\images\uranium-238_table.PNG)
 *Detailed numerical data showing the simulation results at each time point for Uranium-238*
 
 ## Formulas
