@@ -14,42 +14,43 @@
     {% block head_scripts %}{% endblock %}
 </head>
 <body>
-    <nav>
-        <div class="container">
-                <a href="{{ url_for('main.index') }}" class="nav-brand">
-                    Decay Simulator
-                </a>
-            <div class="nav-links">
-                <a href="{{ url_for('main.about') }}">
-                    About
-                </a>
+    <div class="page-container">
+        <nav>
+            <div class="container">
+                    <a href="{{ url_for('main.index') }}" class="nav-brand">
+                        Decay Simulator
+                    </a>
+                <div class="nav-links">
+                    <a href="{{ url_for('main.about') }}">
+                        About
+                    </a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <main>
-        <div class="container">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert {% if category == 'error' %}alert-error{% else %}alert-success{% endif %}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            
-            {% block content %}{% endblock %}
-        </div>
-    </main>
+        <main>
+            <div class="container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert {% if category == 'error' %}alert-error{% else %}alert-success{% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                
+                {% block content %}{% endblock %}
+            </div>
+        </main>
 
-    <footer>
-        <div class="container">
-            <p>Source code: <a href="https://github.com/katerib/radioactive-decay-sim" target="_blank">GitHub</a></p>
-            <p>Built by <a href="https://github.com/katerib/" target="_blank">Katerib</a> & <a href="https://github.com/bitboody/" target="_blank">Bitboody</a></p>
-        </div>
-    </footer>
-
+        <footer>
+            <div class="container">
+                <p>Source code: <a href="https://github.com/katerib/radioactive-decay-sim" target="_blank">GitHub</a></p>
+                <p>Built by <a href="https://github.com/katerib/" target="_blank">Katerib</a> & <a href="https://github.com/bitboody/" target="_blank">Bitboody</a></p>
+            </div>
+        </footer>
+    </div>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>
