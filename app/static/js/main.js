@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const simulationForm = document.getElementById('simulationForm');
     const dataPointsButton = document.getElementById('dataPointsButton');
     const dataPointsContainer = document.getElementById('dataPointsContainer');
