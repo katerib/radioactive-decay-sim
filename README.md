@@ -32,6 +32,7 @@ A web-based tool for simulating radioactive decay through half-life calculations
 Radioactive decay is a fundamental process in nuclear physics where unstable atomic nuclei transform into more stable forms. While the exact moment of decay for any single atom is unpredictable, large populations of atoms follow mathematical patterns that can be modeled using statistical methods. This simulator models those patterns, allowing users to visualize decay curves, calculate remaining material over time, and explore the half-life behavior of different isotopes.
 
 ![I-131 Simulation](https://i.ibb.co/s9LxKvPn/I-131.png)
+
 *I-131 decay simulation done over 100 time-steps*
 
 ## Key Features
