@@ -1,18 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     const simulationForm = document.getElementById('simulationForm');
     const dataPointsButton = document.getElementById('dataPointsButton');
-    const dataTable = document.getElementById('dataTable');
+    const dataPointsContainer = document.getElementById('dataPointsContainer');
 
     if (simulationForm) {
         initializeSimulationForm(simulationForm);
     }
 
-    if (dataPointsButton && dataTable) {
+    if (dataPointsButton && dataPointsContainer) {
+        dataPointsContainer.style.display = 'none';
+        
         dataPointsButton.addEventListener('click', () => {
-            dataTable.classList.toggle('hidden');
-            dataPointsButton.textContent = dataTable.classList.contains('hidden') 
-                ? 'Show Data Points' 
-                : 'Hide Data Points';
+            const isHidden = dataPointsContainer.style.display === 'none';
+            dataPointsContainer.style.display = isHidden ? 'block' : 'none';
+            dataPointsButton.textContent = isHidden ? 'Hide Data Points' : 'Show Data Points';
         });
     }
 });
@@ -78,6 +79,11 @@ function updateSimulationResults(result) {
     
     const results = document.getElementById('results');
     results.style.display = 'block';
+    
+    const dataPointsContainer = document.getElementById('dataPointsContainer');
+    dataPointsContainer.style.display = 'none';
+    const dataPointsButton = document.getElementById('dataPointsButton');
+    dataPointsButton.textContent = 'Show Data Points';
 }
 
 function showError(message) {

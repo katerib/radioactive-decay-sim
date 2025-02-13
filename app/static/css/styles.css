@@ -242,6 +242,7 @@ button:disabled {
     margin-bottom: 1rem;
     width: auto;
     display: inline-block;
+    margin: 50px 0 20px !important;
 }
 
 /* TABLE */
