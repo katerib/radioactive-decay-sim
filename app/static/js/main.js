@@ -22,6 +22,27 @@ function initializeSimulationForm(form) {
     form.addEventListener('submit', handleSimulationSubmit);
 }
 
+const saveImageButton = document.getElementById('saveImageButton');
+
+saveImageButton.addEventListener('click', () => {
+    const plotImg = document.getElementById('decayPlot').src;
+    const a = document.createElement('a');
+    a.href = plotImg;
+    a.download = 'decay_plot.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    saveImageButton.disabled = true;
+    saveImageButton.innerHTML = '<span class="spinner">↻</span> Running...';
+
+    setTimeout(() => {
+        saveImageButton.disabled = false;
+        saveImageButton.innerHTML = "Run Simulation";
+    }, 2000);
+
+});
+
 async function handleSimulationSubmit(e) {
     e.preventDefault();
     const form = e.target;
