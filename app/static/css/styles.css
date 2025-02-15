@@ -240,7 +240,6 @@ input:focus, select:focus {
     content: "✔";
     color: var(--grey-900);
     font-size: 14px;
-    font-weight: bold;
     display: block;
     text-align: center;
 }
