@@ -4,7 +4,6 @@
 - [Introduction](#introduction)
 - [Overview](#overview)
 - [Key Features](#key-features)
-- [Todo](#todo)
 - [Installation](#installation)
   - [Cloning the Repository](#cloning-the-repository)
   - [Setting Up the Virtual Environment](#setting-up-the-virtual-environment)
@@ -45,13 +44,6 @@ Radioactive decay is a fundamental process in nuclear physics where unstable ato
 - **Unit Conversion:** supports conversion between common time units
 
 - ? **Decay Chain Modeling:** would be cool to add a visualization of the parent to daughter isotope transformation. Need to figure out how we would even do that though. Can be a later goal.
-
-## Todo
-
-- [X] Calculate decayed and undecayed nuclei using half-life (s)
-- [X] Plot the number of decayed and undecayed nuclei on a graph
-- [ ] Potential feature: specific isotope selection and decay chain modeling
-- [ ] Potential feature: simulate gamma radiation
 
 ## Installation
 
