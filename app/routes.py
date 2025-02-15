@@ -32,6 +32,7 @@ def simulate():
     initial_amount = float(data['initial_amount'])
     time_points = int(data['time_points'])
     noise = int(data['noise'])
+    graph = data['checkedBoxes']
     
     max_time = isotope.half_life * 4
     time_pts = np.linspace(0, max_time, time_points)
@@ -43,7 +44,8 @@ def simulate():
         isotope_name=isotope.name,
         half_life_unit=isotope.half_life_unit,
         noise_percentage=noise,
-        gamma_emission_probability=isotope.gamma_emission_probability / 100             # convert percent to decimal
+        gamma_emission_probability=isotope.gamma_emission_probability / 100,
+        graph=graph
     )
     
     amt_decayed, decay_rate, amt_remaining, gamma_emissions = sim.plot_decay()

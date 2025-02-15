@@ -13,6 +13,7 @@ class DecaySimulation:
     half_life_unit: str 
     noise_percentage: int 
     gamma_emission_probability: float
+    graph: str
 
     def __post_init__(self):
         self.decay_const = np.log(2) / self.half_life
@@ -78,13 +79,23 @@ class DecaySimulation:
         gamma_decay = self.calc_gamma_emissions()
         activity = self.calc_activity()
 
+        graph_remaining = False
+        graph_decayed = False
+        graph_gamma_emissions = False
+        graph_hl = False
+
+        if 'remaining' in self.graph: graph_remaining = True
+        if 'decayed' in self.graph: graph_decayed = True
+        if 'gamma' in self.graph: graph_gamma_emissions = True
+        if 'hl' in self.graph: graph_hl = True
+
         fig, ax1 = plt.subplots(figsize=(10, 6))
         fig.patch.set_facecolor(table_grey)
         ax1.set_facecolor(table_grey)
         
-        ax1.plot(self.time_pts, amt_remaining, color=cyan, marker='.', linestyle='-', label='Remaining Material')
-        ax1.plot(self.time_pts, amt_decayed, color=coral, marker='.', linestyle='--', label='Decayed Material')
-        ax1.plot(self.time_pts, gamma_decay, color=yellow, marker='.', linestyle=':', label='Gamma Decay')
+        if graph_remaining: ax1.plot(self.time_pts, amt_remaining, color=cyan, marker='.', linestyle='-', label='Remaining Material')
+        if graph_decayed: ax1.plot(self.time_pts, amt_decayed, color=coral, marker='.', linestyle='--', label='Decayed Material')
+        if graph_gamma_emissions: ax1.plot(self.time_pts, gamma_decay, color=yellow, marker='.', linestyle=':', label='Gamma Decay')
 
         ax1.set_xlabel(f'Time ({self.half_life_unit})', color=white)
         ax1.set_ylabel('Amount of Material', color=white)
@@ -95,7 +106,7 @@ class DecaySimulation:
         ax2.tick_params(colors=grey_400)
         
         half_life_time = self.half_life
-        ax1.axvline(x=half_life_time, color=white, 
+        if graph_hl: ax1.axvline(x=half_life_time, color=white, 
                     linestyle='--', label='First Half-Life')
 
         lines1, labels1 = ax1.get_legend_handles_labels()

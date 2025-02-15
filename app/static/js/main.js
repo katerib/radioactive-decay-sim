@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const simulationForm = document.getElementById('simulationForm');
     const dataPointsButton = document.getElementById('dataPointsButton');
     const dataPointsContainer = document.getElementById('dataPointsContainer');
+    const submitButton = simulationForm.querySelector('button[type="submit"]');
 
     if (simulationForm) {
         initializeSimulationForm(simulationForm);
@@ -16,6 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
             dataPointsButton.textContent = isHidden ? 'Hide Data Points' : 'Show Data Points';
         });
     }
+
+    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            checkCheckboxes();
+        });
+    });
+
+    function checkCheckboxes() {
+        const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+        submitButton.disabled = !anyChecked;
+    }
+
+    checkCheckboxes(); // Initial check to disable the button if no checkboxes are checked
 });
 
 function initializeSimulationForm(form) {
@@ -40,7 +56,6 @@ saveImageButton.addEventListener('click', () => {
         saveImageButton.disabled = false;
         saveImageButton.innerHTML = "Run Simulation";
     }, 2000);
-
 });
 
 async function handleSimulationSubmit(e) {
@@ -55,7 +70,8 @@ async function handleSimulationSubmit(e) {
         isotope: form.isotope.value,
         initial_amount: form.initial_amount.value,
         time_points: form.time_points.value,
-        noise: form.noise.value
+        noise: form.noise.value,
+        checkedBoxes: Array.from(form.elements).filter(el => el.type === 'checkbox' && el.checked).map(el => el.name)
     };
     
     try {
