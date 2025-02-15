@@ -203,6 +203,48 @@ input:focus, select:focus {
     justify-content: center;
 }
 
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    gap: 8px; /* Adjusts spacing between checkbox and text */
+    color: var(--label-text);
+}
+
+/* Default checkbox styling */
+.checkbox-container input {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--input-border);
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    margin: 0;
+}
+
+/* Checkmark when checked */
+.checkbox-container input:checked {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.checkbox-container input:checked::after {
+    content: "✔";
+    color: var(--grey-900);
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
 /* CARDS */
 .card {
     background-color: var(--card-bg);
