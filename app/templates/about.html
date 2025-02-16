@@ -4,21 +4,64 @@
 <div class="content-wrapper">
   <div class="header">
     <h1>About the project</h1>
+
     <div class="card" style="padding: 15px">
-      <h2>- Why?</h2>
-      <p>We found a shortage in good decay simulators</p>
+      <h2 id="key-features">Key Features</h2>
+      <ul>
+        <li>
+          Half-Life Calculator: predicts the remaining amount of radioactive
+          substance at any given time
+        </li>
+        <li>
+          Interactive Decay Curves: visualizes how radioactive materials change
+          over time
+        </li>
+        <li>
+          User-Friendly Interface: makes complex decay calculations simple to
+          understand
+        </li>
+        <li>Unit Conversion: supports conversion between common time units</li>
+      </ul>
     </div>
+
     <div class="card" style="padding: 15px">
-      <h2>- How does it work?</h2>
-      <p>Decay Constant:</p>
-      <p>$$λ = \frac{\ln(2)}{t_{1/2}}$$</p>
-      <br>
-      <p>Number of undecayed material:</p>
-      <p>$$N(t) = N_0 * e^{-\lambda t}$$</p>
+      <h2 id="formulas">Formulas</h2>
+      <h3 id="decay-constant">Decay Constant</h3>
+      <p>
+        The rate that characterizes radioactive decay. Represents how quickly a
+        specific radioactive material decays over time. Each isotope has its own
+        unique decay constant calculated from its half-life.
+      </p>
+      <p>$$ λ = \frac{\ln(2)}{t_{1/2}} $$</p>
+      <ul>
+        <li>λ = decay constant of radioactive isotope</li>
+        <li>ln(2) ≈ 0.693</li>
+        <li>t₁/₂ = half-life</li>
+      </ul>
+      <h3 id="rate-of-decay">Exponential decay formula</h3>
+      <p>
+        The exponential decay equation that models how the amount of radioactive
+        material changes over time. This describes the relationship between the
+        initial amount, decay constant, and time elapsed.
+      </p>
+      <p>$$ N(t) = N_0 * e^{-\lambda t} $$</p>
+      <p>Where:</p>
+      <ul>
+        <li>N(t) = amount remaining at time t</li>
+        <li>N₀ = initial amount</li>
+        <li>λ = decay constant of radioactive isotope</li>
+        <li>t = time elapsed</li>
+      </ul>
+      <p>Derived quantities:</p>
+      <ul>
+        <li>λN(t) = current decay rate</li>
+        <li>N(t) = amount remaining</li>
+        <li>N₀ - N(t) = amount decayed</li>
+      </ul>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default"></script>
+
+    {% endblock %}
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default"></script>
-
-  {% endblock %}
 </div>

@@ -139,6 +139,12 @@ h2 {
     color: var(--primary-blue);
 }
 
+h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-cyan);
+}
+
 /* FORM ELEMENTS */
 .form-grid {
     display: grid;
