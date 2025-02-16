@@ -167,7 +167,7 @@ $$
 - ln(2) ≈ 0.693
 - t₁/₂ = half-life
 
-### Rate of Decay
+### Exponential decay formula 
 
 The exponential decay equation that models how the amount of radioactive material changes over time. This describes the relationship between the initial amount, decay constant, and time elapsed.
 
