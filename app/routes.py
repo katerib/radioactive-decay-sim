@@ -7,12 +7,13 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 from .decay_simulator import DecaySimulation
-from .isotopes import CARBON_14, COBALT_60, IODINE_131, URANIUM_238, CESIUM_137
+from .isotopes import CARBON_14, RADIUM_226, COBALT_60, IODINE_131, URANIUM_238, CESIUM_137
 
 main_bp = Blueprint('main', __name__)
 
 ISOTOPES = {
     'carbon-14': CARBON_14,
+    'radium-226': RADIUM_226,
     'cobalt-60': COBALT_60,
     'iodine-131': IODINE_131,
     'uranium-238': URANIUM_238,
