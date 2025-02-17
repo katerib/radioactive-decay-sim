@@ -65,12 +65,12 @@ saveImageButton.addEventListener("click", () => {
   document.body.removeChild(a);
 
   saveImageButton.disabled = true;
-  saveImageButton.innerHTML = '<span class="spinner">↻</span> Running...';
+  saveImageButton.innerHTML = '<span class="spinner">↻</span> Saving...';
 
   setTimeout(() => {
     saveImageButton.disabled = false;
-    saveImageButton.innerHTML = "Run Simulation";
-  }, 2000);
+    saveImageButton.innerHTML = "Save as Image";
+  }, 400);
 });
 
 async function handleSimulationSubmit(e) {
