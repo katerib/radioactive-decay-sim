@@ -65,26 +65,35 @@ endblock %} {% block content %}
           />
         </div>
       </div>
-      <label class="checkbox-container">
-        <input type="checkbox" id="show_remaining" name="remaining" checked />
-        <span class="checkmark"></span>
-        Remaining Material
-      </label>
-      <label class="checkbox-container">
-        <input type="checkbox" id="show_decayed" name="decayed" checked />
-        <span class="checkmark"></span>
-        Decayed Material
-      </label>
-      <label class="checkbox-container">
-        <input type="checkbox" id="show_gamma_decay" name="gamma" checked />
-        <span class="checkmark"></span>
-        Gamma Decay
-      </label>
-      <label class="checkbox-container">
-        <input type="checkbox" id="show_first_half_life" name="hl" checked />
-        <span class="checkmark"></span>
-        First Half-Life
-      </label>
+      <div class="plot-settings" id="plot-settings">
+        <p class="settings-toggle" id="settingsToggle">
+          <span class="settings-icon">⚙️</span>
+          <span class="settings-text">Show Advanced Settings</span>
+        </p>
+        <div class="settings-content" id="settingsContent" style="display: none;">
+          <p class="settings-text">Select data series to display them on the plot:</p>
+          <label class="checkbox-container">
+            <input type="checkbox" id="show_remaining" name="remaining" checked />
+            <span class="checkmark"></span>
+            Remaining Material
+          </label>
+          <label class="checkbox-container">
+            <input type="checkbox" id="show_decayed" name="decayed" checked />
+            <span class="checkmark"></span>
+            Decayed Material
+          </label>
+          <label class="checkbox-container">
+            <input type="checkbox" id="show_gamma_decay" name="gamma" checked />
+            <span class="checkmark"></span>
+            Gamma Decay
+          </label>
+          <label class="checkbox-container">
+            <input type="checkbox" id="show_first_half_life" name="hl" checked />
+            <span class="checkmark"></span>
+            First Half-Life
+          </label>
+        </div>
+      </div>
       <div class="button-container">
         <button type="submit">Run Simulation</button>
       </div>
