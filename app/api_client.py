@@ -5,10 +5,20 @@ import json
 def parse_decay_data(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     datasets = []
+    isotope_data = []
     
     # find all text
     text_content = soup.body.get_text() if soup.body else ""
     dataset_sections = text_content.split("Dataset #")[1:]
+    tables = soup.find_all('table', {'border': '0', 'cellspacing': '1', 'cellpadding': '2', 'bgcolor': 'navy'})
+    for table in tables:
+        rows = table.find_all('tr')[1]  # Skip header
+        columns = rows.find_all('td')
+        
+        isotope_data.append({
+            'half-life': columns[5].get_text(strip=True),
+            'Decay Mode': columns[6].get_text(strip=True),
+        })   
     
     for i, section in enumerate(dataset_sections, 1):
         # gamma section
@@ -55,7 +65,8 @@ def parse_decay_data(html_content):
         if gamma_data:
             datasets.append({
                 'dataset': i,
-                'gamma_emissions': gamma_data
+                'gamma_emissions': gamma_data,
+                'isotope_data': isotope_data 
             })
     
     return datasets
