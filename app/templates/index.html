@@ -19,6 +19,16 @@ endblock %} {% block content %}
             </option>
             {% endfor %}
           </select>
+          <label for="isotope_search">
+            Search Isotope
+            <span class="label-hint">(If you don't want to search, leave it empty)</span>
+          </label>
+          <input
+            type="string"
+            id="isotope_search"
+            name="isotope_search"
+            value="Co60"
+          />
         </div>
         <div class="form-group">
           <label for="initial_amount">

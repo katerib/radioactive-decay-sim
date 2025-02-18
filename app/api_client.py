@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 
 
-def searchIsotope(isotope_name):
+def SearchIsotope(isotope_name):
 
     url = f"https://www.nndc.bnl.gov/nudat3/decaysearchdirect.jsp?nuc={isotope_name}&unc=NDS"
 
@@ -13,7 +13,7 @@ def searchIsotope(isotope_name):
 
     parsed_data = parse_decay_data(soup, isotope_name)
 
-    print(json.dumps(parsed_data, indent=4))
+    return json.dumps(parsed_data, indent=4)
 
 
 def parse_decay_data(soup, isotope_name):
@@ -35,7 +35,3 @@ def parse_decay_data(soup, isotope_name):
         })
     
     return data 
-
-
-
-searchIsotope("Co60")

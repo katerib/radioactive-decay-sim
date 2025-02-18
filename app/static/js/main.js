@@ -78,6 +78,7 @@ async function handleSimulationSubmit(e) {
     checkedBoxes: Array.from(form.elements)
       .filter((el) => el.type === "checkbox" && el.checked)
       .map((el) => el.name),
+    isotope_search: form.isotope_search.value,
   };
 
   try {
