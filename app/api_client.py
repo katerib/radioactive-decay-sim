@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 import json
 
 
-def searchIsotope(name):
+def searchIsotope(isotope_name):
 
-    url = f"https://www.nndc.bnl.gov/nudat3/decaysearchdirect.jsp?nuc={name}&unc=NDS"
+    url = f"https://www.nndc.bnl.gov/nudat3/decaysearchdirect.jsp?nuc={isotope_name}&unc=NDS"
 
     res = requests.get(url)
 
