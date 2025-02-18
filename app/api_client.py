@@ -11,12 +11,12 @@ def searchIsotope(isotope_name):
 
     soup = BeautifulSoup(res.text, 'html.parser')
 
-    parsed_data = parse_decay_data(soup)
+    parsed_data = parse_decay_data(soup, isotope_name)
 
     print(json.dumps(parsed_data, indent=4))
 
 
-def parse_decay_data(soup):
+def parse_decay_data(soup, isotope_name):
     tables = soup.find_all('table', {'border': '0', 'cellspacing': '1', 'cellpadding': '2', 'bgcolor': 'navy'})
     data = []
     for table in tables:
@@ -24,7 +24,8 @@ def parse_decay_data(soup):
         columns = rows.find_all('td')
         
         data.append({
-            'Nucleus': columns[2].get_text(strip=True),
+            # 'Nucleus': columns[2].get_text(strip=True),
+            'Isotope': isotope_name,
             # 'E(level)': columns[3].get_text(strip=True),
             # 'Jπ': columns[4].get_text(strip=True),
             'T1/2': columns[5].get_text(strip=True),
