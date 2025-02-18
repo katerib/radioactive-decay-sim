@@ -5,6 +5,7 @@ import base64
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from .api_client import SearchIsotope
 
 from .decay_simulator import DecaySimulation
 from .isotopes import CARBON_14, RADIUM_226, COBALT_60, IODINE_131, URANIUM_238, CESIUM_137
@@ -34,7 +35,12 @@ def simulate():
     time_points = int(data['time_points'])
     noise = int(data['noise'])
     graph = data['checkedBoxes']
+    isotope_search = data['isotope_search']
     
+    if isotope_search: 
+        print(SearchIsotope(isotope_search))
+        return
+
     max_time = isotope.half_life * 4
     time_pts = np.linspace(0, max_time, time_points)
     
