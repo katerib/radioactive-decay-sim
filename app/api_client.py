@@ -8,8 +8,8 @@ def parse_decay_data(html_content):
     isotope_data = []
     
     # find all text
-    text_content = soup.body.get_text() if soup.body else ""
-    dataset_sections = text_content.split("Dataset #")[1:]
+    text_content = soup.body.get_text() if soup.body else ''
+    dataset_sections = text_content.split('Dataset #')[1:]
     tables = soup.find_all('table', {'border': '0', 'cellspacing': '1', 'cellpadding': '2', 'bgcolor': 'navy'})
     for table in tables:
         rows = table.find_all('tr')[1]  # Skip header
@@ -23,7 +23,7 @@ def parse_decay_data(html_content):
     for i, section in enumerate(dataset_sections, 1):
         # gamma section
         gamma_data = []
-        gamma_start = section.find("Gamma and X-ray radiation:")
+        gamma_start = section.find('Gamma and X-ray radiation:')
         if gamma_start != -1:
             gamma_lines = section[gamma_start:].split('\n')
             header_found = False
@@ -43,12 +43,12 @@ def parse_decay_data(html_content):
                     try:
                         # if line starts with XR, the first two parts are the type
                         if line.startswith('XR'):
-                            rad_type = f"{parts[0]} {parts[1]}"
+                            rad_type = f'{parts[0]} {parts[1]}'
                             energy = float(parts[2])
                             intensity = float(parts[3].rstrip('%'))
                             dose = float(parts[-1])
                         else:
-                            rad_type = "gamma"
+                            rad_type = 'gamma'
                             energy = float(parts[0])
                             intensity = float(parts[1].rstrip('%'))
                             dose = float(parts[-1])
@@ -73,33 +73,33 @@ def parse_decay_data(html_content):
 
 
 def searchIsotope(name):
-    url = f"https://www.nndc.bnl.gov/nudat3/decaysearchdirect.jsp?nuc={name}&unc=NDS"
+    url = f'https://www.nndc.bnl.gov/nudat3/decaysearchdirect.jsp?nuc={name}&unc=NDS'
     response = requests.get(url)
     if response.status_code == 200:
         return parse_decay_data(response.text)
     else:
-        print(f"Error: Got status code {response.status_code}")
+        print(f'Error: Got status code {response.status_code}')
         return []
 
 
-if __name__ == "__main__":
-    print("Getting Co60 data from NNDC website:")
-    web_data = searchIsotope("Co60")
+if __name__ == '__main__':
+    print('Getting Co60 data from NNDC website:')
+    web_data = searchIsotope('Co60')
     for dataset in web_data:
-        print(f"\nDataset {dataset['dataset']}")
+        print(f'\nDataset {dataset['dataset']}')
         for emission in dataset['gamma_emissions']:
-            print(f"Type: {emission['type']}")
-            print(f" > Energy: {emission['energy']:.3f} keV")
-            print(f" > Intensity: {emission['intensity']:.3f}%")
-            print(f" > Dose: {emission['dose']:.6f} MeV/Bq-s")
-            print("-" * 40)
+            print(f'Type: {emission['type']}')
+            print(f' > Energy: {emission['energy']:.3f} keV')
+            print(f' > Intensity: {emission['intensity']:.3f}%')
+            print(f' > Dose: {emission['dose']:.6f} MeV/Bq-s')
+            print('-' * 40)
 
     # only print gamma
     for dataset in web_data:
-        print(f"\nDataset {dataset['dataset']}")
+        print(f'\nDataset {dataset['dataset']}')
         gamma_only = [e for e in dataset['gamma_emissions'] if e['type'] == 'gamma']
         for emission in gamma_only:
-            print(f"Energy: {emission['energy']:.3f} keV")
-            print(f"Intensity: {emission['intensity']:.3f}%")
-            print(f"Dose: {emission['dose']:.6f} MeV/Bq-s")
-            print("-" * 40)
+            print(f'Energy: {emission['energy']:.3f} keV')
+            print(f'Intensity: {emission['intensity']:.3f}%')
+            print(f'Dose: {emission['dose']:.6f} MeV/Bq-s')
+            print('-' * 40)
