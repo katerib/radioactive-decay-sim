@@ -3,6 +3,7 @@ import numpy as np
 import io
 import base64
 import matplotlib
+import json
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from .api_client import SearchIsotope
@@ -45,6 +46,11 @@ def simulate():
 
         for i, entry in enumerate(isotope_data):
             dataset_id = entry['dataset']
+    
+            hl_unit_array = entry['isotope_data'][i]['half-life'].split() 
+
+            hl = hl_unit_array[0]
+            unit = ''.join(filter(lambda x: x.isalpha(), hl_unit_array[1]))
 
             parsed_data[dataset_id] = {
                 'gamma_emissions': [
@@ -58,13 +64,14 @@ def simulate():
                 ],
                 'isotope_data': [
                     {
-                        'half_life': entry['isotope_data'][i]['half-life'],
+                        'half_life': hl,
+                        'unit': unit,
                         'decay_mode': entry['isotope_data'][i]['Decay Mode'],
                     }
                 ]
             }
     
-    print(parsed_data[3])
+    print(json.dumps(parsed_data[3], indent = 4))
 
     max_time = isotope.half_life * 4
     time_pts = np.linspace(0, max_time, time_points)
