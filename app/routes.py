@@ -43,7 +43,7 @@ def simulate():
 
         isotope_data = SearchIsotope(isotope_search)
 
-        for entry in isotope_data:
+        for i, entry in enumerate(isotope_data):
             dataset_id = entry['dataset']
 
             parsed_data[dataset_id] = {
@@ -58,12 +58,13 @@ def simulate():
                 ],
                 'isotope_data': [
                     {
-                        'half_life': isotope['half-life'],
-                        'decay_mode': isotope['Decay Mode'],
+                        'half_life': entry['isotope_data'][i]['half-life'],
+                        'decay_mode': entry['isotope_data'][i]['Decay Mode'],
                     }
-                    for isotope in entry['isotope_data']
                 ]
             }
+    
+    print(parsed_data[3])
 
     max_time = isotope.half_life * 4
     time_pts = np.linspace(0, max_time, time_points)
