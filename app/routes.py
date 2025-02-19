@@ -71,7 +71,7 @@ def simulate():
                 ]
             }
     
-    print(json.dumps(parsed_data[3], indent = 4))
+    parsed_data = json.dumps(parsed_data, indent = 4)
 
     max_time = isotope.half_life * 4
     time_pts = np.linspace(0, max_time, time_points)
