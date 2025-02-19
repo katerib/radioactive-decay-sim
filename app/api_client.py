@@ -10,6 +10,8 @@ def parse_decay_data(html_content):
     # find all text
     text_content = soup.body.get_text() if soup.body else ''
     dataset_sections = text_content.split('Dataset #')[1:]
+
+    # Get the isotope data
     tables = soup.find_all('table', {'border': '0', 'cellspacing': '1', 'cellpadding': '2', 'bgcolor': 'navy'})
     for table in tables:
         rows = table.find_all('tr')[1]  # Skip header
