@@ -74,7 +74,7 @@ def parse_decay_data(html_content):
     return datasets
 
 
-def searchIsotope(name):
+def SearchIsotope(name):
     url = f'https://www.nndc.bnl.gov/nudat3/decaysearchdirect.jsp?nuc={name}&unc=NDS'
     response = requests.get(url)
     if response.status_code == 200:
@@ -84,24 +84,24 @@ def searchIsotope(name):
         return []
 
 
-if __name__ == '__main__':
-    print('Getting Co60 data from NNDC website:')
-    web_data = searchIsotope('Co60')
-    for dataset in web_data:
-        print(f'\nDataset {dataset['dataset']}')
-        for emission in dataset['gamma_emissions']:
-            print(f'Type: {emission['type']}')
-            print(f' > Energy: {emission['energy']:.3f} keV')
-            print(f' > Intensity: {emission['intensity']:.3f}%')
-            print(f' > Dose: {emission['dose']:.6f} MeV/Bq-s')
-            print('-' * 40)
+# if __name__ == '__main__':
+#     print('Getting Co60 data from NNDC website:')
+#     web_data = SearchIsotope('Co60')
+#     for dataset in web_data:
+#         print(f'\nDataset {dataset['dataset']}')
+#         for emission in dataset['gamma_emissions']:
+#             print(f'Type: {emission['type']}')
+#             print(f' > Energy: {emission['energy']:.3f} keV')
+#             print(f' > Intensity: {emission['intensity']:.3f}%')
+#             print(f' > Dose: {emission['dose']:.6f} MeV/Bq-s')
+#             print('-' * 40)
 
-    # only print gamma
-    for dataset in web_data:
-        print(f'\nDataset {dataset['dataset']}')
-        gamma_only = [e for e in dataset['gamma_emissions'] if e['type'] == 'gamma']
-        for emission in gamma_only:
-            print(f'Energy: {emission['energy']:.3f} keV')
-            print(f'Intensity: {emission['intensity']:.3f}%')
-            print(f'Dose: {emission['dose']:.6f} MeV/Bq-s')
-            print('-' * 40)
+#     # only print gamma
+#     for dataset in web_data:
+#         print(f'\nDataset {dataset['dataset']}')
+#         gamma_only = [e for e in dataset['gamma_emissions'] if e['type'] == 'gamma']
+#         for emission in gamma_only:
+#             print(f'Energy: {emission['energy']:.3f} keV')
+#             print(f'Intensity: {emission['intensity']:.3f}%')
+#             print(f'Dose: {emission['dose']:.6f} MeV/Bq-s')
+#             print('-' * 40)

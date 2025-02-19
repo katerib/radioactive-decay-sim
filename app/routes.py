@@ -36,10 +36,34 @@ def simulate():
     noise = int(data['noise'])
     graph = data['checkedBoxes']
     isotope_search = data['isotope_search']
-    
-    if isotope_search: 
-        print(SearchIsotope(isotope_search))
-        return
+
+    if isotope_search:
+
+        parsed_data = {}
+
+        isotope_data = SearchIsotope(isotope_search)
+
+        for entry in isotope_data:
+            dataset_id = entry['dataset']
+
+            parsed_data[dataset_id] = {
+                'gamma_emissions': [
+                    {
+                        'type': emission['type'],
+                        'energy': emission['energy'],
+                        'intensity': emission['intensity'],
+                        'dose': emission['dose'],
+                    }
+                    for emission in entry['gamma_emissions']
+                ],
+                'isotope_data': [
+                    {
+                        'half_life': isotope['half-life'],
+                        'decay_mode': isotope['Decay Mode'],
+                    }
+                    for isotope in entry['isotope_data']
+                ]
+            }
 
     max_time = isotope.half_life * 4
     time_pts = np.linspace(0, max_time, time_points)
