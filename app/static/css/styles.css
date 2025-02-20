@@ -226,6 +226,13 @@ select:focus {
 }
 
 /* Default checkbox styling */
+.settings-toggle,
+.settings-text {
+  cursor: pointer;
+  color: var(--label-text);
+  font-size: 0.875rem;
+}
+
 .checkbox-container input {
   appearance: none;
   width: 18px;

@@ -35,6 +35,17 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.disabled = !anyChecked;
   }
 
+  const settingsToggle = document.getElementById("settingsToggle");
+  const settingsContent = document.getElementById("settingsContent");
+
+  if (settingsToggle && settingsContent) {
+    settingsToggle.addEventListener("click", () => {
+      const isHidden = settingsContent.style.display === "none";
+      settingsContent.style.display = isHidden ? "block" : "none";
+      settingsToggle.classList.toggle("active");
+    });
+  }
+
   checkCheckboxes(); // Initial check to disable the button if no checkboxes are checked
 });
 
@@ -54,12 +65,12 @@ saveImageButton.addEventListener("click", () => {
   document.body.removeChild(a);
 
   saveImageButton.disabled = true;
-  saveImageButton.innerHTML = '<span class="spinner">↻</span> Running...';
+  saveImageButton.innerHTML = '<span class="spinner">↻</span> Saving...';
 
   setTimeout(() => {
     saveImageButton.disabled = false;
-    saveImageButton.innerHTML = "Run Simulation";
-  }, 2000);
+    saveImageButton.innerHTML = "Save as Image";
+  }, 400);
 });
 
 async function handleSimulationSubmit(e) {
