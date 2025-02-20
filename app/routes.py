@@ -3,8 +3,10 @@ import numpy as np
 import io
 import base64
 import matplotlib
+import json
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from .api_client import SearchIsotope
 
 from .decay_simulator import DecaySimulation
 from .isotopes import CARBON_14, RADIUM_226, COBALT_60, IODINE_131, URANIUM_238, CESIUM_137
@@ -34,7 +36,43 @@ def simulate():
     time_points = int(data['time_points'])
     noise = int(data['noise'])
     graph = data['checkedBoxes']
+    isotope_search = data['isotope_search']
+
+    if isotope_search != '':
+
+        parsed_data = {}
+
+        isotope_data = SearchIsotope(isotope_search)
+
+        for i, entry in enumerate(isotope_data):
+            dataset_id = entry['dataset']
     
+            hl_unit_array = entry['isotope_data'][i]['half-life'].split() 
+
+            hl = hl_unit_array[0]
+            unit = ''.join(filter(lambda x: x.isalpha(), hl_unit_array[1]))
+
+            parsed_data[dataset_id] = {
+                'gamma_emissions': [
+                    {
+                        'type': emission['type'],
+                        'energy': emission['energy'],
+                        'intensity': emission['intensity'],
+                        'dose': emission['dose'],
+                    }
+                    for emission in entry['gamma_emissions']
+                ],
+                'isotope_data': [
+                    {
+                        'half_life': hl,
+                        'unit': unit,
+                        'decay_mode': entry['isotope_data'][i]['Decay Mode'],
+                    }
+                ]
+            }
+    
+        parsed_data = json.dumps(parsed_data, indent = 4)
+
     max_time = isotope.half_life * 4
     time_pts = np.linspace(0, max_time, time_points)
     

@@ -19,6 +19,18 @@ endblock %} {% block content %}
             </option>
             {% endfor %}
           </select>
+          <label for="isotope_search" style="margin-top: 20px">
+            Search Isotope
+            <span class="label-hint"
+              >(If you don't want to search, leave it empty)</span
+            >
+          </label>
+          <input
+            type="string"
+            id="isotope_search"
+            name="isotope_search"
+            value="Co60"
+          />
         </div>
         <div class="form-group">
           <label for="initial_amount">
@@ -95,7 +107,7 @@ endblock %} {% block content %}
         </div>
       </div>
       <div class="button-container">
-        <button type="submit">Run Simulation</button>
+        <button type="submit" id="runSimulationButton">Run Simulation</button>
       </div>
     </form>
   </div>
