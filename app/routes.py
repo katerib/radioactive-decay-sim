@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from .api_client import SearchIsotope
 
 from .decay_simulator import DecaySimulation
-from .isotopes import CARBON_14, RADIUM_226, COBALT_60, IODINE_131, URANIUM_238, CESIUM_137
+from .isotopes import CARBON_14, RADIUM_226, COBALT_60, IODINE_131, URANIUM_238, CESIUM_137, Isotope
 
 main_bp = Blueprint('main', __name__)
 
@@ -19,19 +19,29 @@ ISOTOPES = {
     'cobalt-60': COBALT_60,
     'iodine-131': IODINE_131,
     'uranium-238': URANIUM_238,
-    'cesium-137': CESIUM_137
+    'cesium-137': CESIUM_137,
+    'custom': None
 }
-
 
 @main_bp.route('/')
 def index():
     return render_template('index.html', isotopes=ISOTOPES)
 
-
 @main_bp.route('/simulate', methods=['POST'])
 def simulate():
     data = request.json
-    isotope = ISOTOPES[data['isotope']]
+    
+    if data['isotope'] == 'custom':
+        custom_isotope = Isotope(
+            name=data['custom_name'],
+            half_life=float(data['custom_half_life']),
+            gamma_emission_probability=float(data['custom_gamma']),
+            half_life_unit=data['custom_half_life_unit']
+        )
+        isotope = custom_isotope
+    else:
+        isotope = ISOTOPES[data['isotope']]
+        
     initial_amount = float(data['initial_amount'])
     time_points = int(data['time_points'])
     noise = int(data['noise'])
@@ -39,9 +49,7 @@ def simulate():
     isotope_search = data['isotope_search']
 
     if isotope_search != '':
-
         parsed_data = {}
-
         isotope_data = SearchIsotope(isotope_search)
 
         for i, entry in enumerate(isotope_data):

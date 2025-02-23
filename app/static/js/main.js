@@ -3,9 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const dataPointsButton = document.getElementById("dataPointsButton");
   const dataPointsContainer = document.getElementById("dataPointsContainer");
   const submitButton = simulationForm.querySelector('button[type="submit"]');
+  const isotopeSelect = document.getElementById("isotope");
+  const customIsotopeFields = document.getElementById("customIsotopeFields");
 
   if (simulationForm) {
     initializeSimulationForm(simulationForm);
+  }
+
+  if (isotopeSelect) {
+    isotopeSelect.addEventListener("change", () => {
+      if (customIsotopeFields) {
+        customIsotopeFields.style.display = 
+          isotopeSelect.value === "custom" ? "block" : "none";
+      }
+    });
   }
 
   if (dataPointsButton && dataPointsContainer) {
@@ -46,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  checkCheckboxes(); // Initial check to disable the button if no checkboxes are checked
+  checkCheckboxes();
 });
 
 function initializeSimulationForm(form) {
@@ -81,6 +92,19 @@ async function handleSimulationSubmit(e) {
   submitButton.disabled = true;
   submitButton.innerHTML = '<span class="spinner">↻</span> Running...';
 
+  // custom isotope validation
+  if (form.isotope.value === 'custom') {
+    const requiredFields = ['custom_name', 'custom_half_life', 'custom_gamma'];
+    for (const field of requiredFields) {
+      if (!form[field].value) {
+        showError(`Please fill in all custom isotope fields`);
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Run Simulation';
+        return;
+      }
+    }
+  }
+
   const data = {
     isotope: form.isotope.value,
     initial_amount: form.initial_amount.value,
@@ -91,6 +115,14 @@ async function handleSimulationSubmit(e) {
       .map((el) => el.name),
     isotope_search: form.isotope_search.value,
   };
+
+  // logic for custom isotope
+  if (data.isotope === 'custom') {
+    data.custom_name = form.custom_name.value;
+    data.custom_half_life = form.custom_half_life.value;
+    data.custom_half_life_unit = form.custom_half_life_unit.value;
+    data.custom_gamma = form.custom_gamma.value;
+  }
 
   try {
     const response = await fetch("/simulate", {
