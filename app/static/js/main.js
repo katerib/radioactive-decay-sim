@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (isotopeSelect) {
     isotopeSelect.addEventListener("change", () => {
       if (customIsotopeFields) {
-        customIsotopeFields.style.display = 
+        customIsotopeFields.style.display =
           isotopeSelect.value === "custom" ? "block" : "none";
       }
     });
@@ -93,13 +93,13 @@ async function handleSimulationSubmit(e) {
   submitButton.innerHTML = '<span class="spinner">↻</span> Running...';
 
   // custom isotope validation
-  if (form.isotope.value === 'custom') {
-    const requiredFields = ['custom_name', 'custom_half_life', 'custom_gamma'];
+  if (form.isotope.value === "custom") {
+    const requiredFields = ["custom_name", "custom_half_life", "custom_gamma"];
     for (const field of requiredFields) {
       if (!form[field].value) {
         showError(`Please fill in all custom isotope fields`);
         submitButton.disabled = false;
-        submitButton.innerHTML = 'Run Simulation';
+        submitButton.innerHTML = "Run Simulation";
         return;
       }
     }
@@ -117,7 +117,7 @@ async function handleSimulationSubmit(e) {
   };
 
   // logic for custom isotope
-  if (data.isotope === 'custom') {
+  if (data.isotope === "custom") {
     data.custom_name = form.custom_name.value;
     data.custom_half_life = form.custom_half_life.value;
     data.custom_half_life_unit = form.custom_half_life_unit.value;
@@ -167,11 +167,29 @@ function updateDatasetSelection(datasets) {
   }
 
   // Iterate over the datasets object
-  for (const [id, data] of Object.entries(datasets)) {
-    const option = document.createElement("option");
-    option.value = id;
-    option.textContent = `Dataset ${id} - Half-Life: ${data.isotope_data[0].half_life} ${data.isotope_data[0].unit}`;
-    datasetSelect.appendChild(option);
+  for (const [id, dataset] of Object.entries(datasets)) {
+    // Access the first entry in isotope_data (assuming there's only one)
+    const isotopeData = dataset.isotope_data[0];
+
+    // Iterate over gamma emissions for the current dataset
+    for (const emission of dataset.gamma_emissions) {
+      if (emission.type === "gamma") {
+        // Create a new option for each gamma emission
+        const option = document.createElement("option");
+
+        // Set the display text
+        option.textContent = `Dataset ${id} - Intensity: ${emission.intensity}% - Energy: ${emission.energy} keV - T₁/₂: ${isotopeData.half_life} ${isotopeData.unit}`;
+
+        // Add custom data attributes
+        option.dataset.datasetId = id;
+        option.dataset.energy = emission.energy;
+        option.dataset.intensity = emission.intensity;
+        option.dataset.halfLife = isotopeData.half_life;
+        option.dataset.halfLifeUnit = isotopeData.unit;
+
+        datasetSelect.appendChild(option);
+      }
+    }
   }
 }
 
