@@ -1,0 +1,1242 @@
+{
+    "P-32": {
+        "name": "phosphorus-32",
+        "short_name": "P-32",
+        "atomic_number": 15,
+        "mass": 30.973761998,
+        "density": 1.82,
+        "half_life": 14.268,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "5",
+        "parent_nucleus": "32 15 P",
+        "parent_energy": "0",
+        "parent_spin_parity": "1+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "1710.66 4",
+        "daughter_nucleus": "32 16 S"
+    },
+    "Co-60": {
+        "name": "cobalt-60",
+        "short_name": "Co-60",
+        "atomic_number": 27,
+        "mass": 58.933194,
+        "density": 8.9,
+        "half_life": 10.467,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "6",
+        "parent_nucleus": "60 27 Co",
+        "parent_energy": "58.603 7",
+        "parent_spin_parity": "2+",
+        "decay_mode": {
+            "symbol": "IT",
+            "type": "IT",
+            "probability": "unknown"
+        },
+        "gs_gs_q_value": "",
+        "daughter_nucleus": "60 27 Co"
+    },
+    "Kr-85": {
+        "name": "krypton-85",
+        "short_name": "Kr-85",
+        "atomic_number": 36,
+        "mass": 83.798,
+        "density": 2.16,
+        "half_life": 4.48,
+        "half_life_unit": "h",
+        "half_life_uncertainty": "8",
+        "parent_nucleus": "85 36 Kr",
+        "parent_energy": "304.87 2",
+        "parent_spin_parity": "1/2-",
+        "decay_mode": {
+            "symbol": "IT",
+            "type": "IT",
+            "probability": "21.2 5 %"
+        },
+        "gs_gs_q_value": "",
+        "daughter_nucleus": "85 36 Kr"
+    },
+    "Sr-90": {
+        "name": "strontium-90",
+        "short_name": "Sr-90",
+        "atomic_number": 38,
+        "mass": 87.62,
+        "density": 2.54,
+        "half_life": 28.91,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "3",
+        "parent_nucleus": "90 38 Sr",
+        "parent_energy": "0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "545.9 14",
+        "daughter_nucleus": "90 39 Y"
+    },
+    "Y-90": {
+        "name": "yttrium-90",
+        "short_name": "Y-90",
+        "atomic_number": 39,
+        "mass": 88.905838,
+        "density": 4.469,
+        "half_life": 3.19,
+        "half_life_unit": "h",
+        "half_life_uncertainty": "6",
+        "parent_nucleus": "90 39 Y",
+        "parent_energy": "682.01 5",
+        "parent_spin_parity": "7+",
+        "decay_mode": {
+            "symbol": "IT",
+            "type": "IT",
+            "probability": "99.9982 2 %"
+        },
+        "gs_gs_q_value": "",
+        "daughter_nucleus": "90 39 Y"
+    },
+    "Zr-95": {
+        "name": "zirconium-95",
+        "short_name": "Zr-95",
+        "atomic_number": 40,
+        "mass": 91.224,
+        "density": 6.506,
+        "half_life": 64.032,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "6",
+        "parent_nucleus": "95 40 Zr",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "5/2+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "1123.6 18",
+        "daughter_nucleus": "95 41 Nb"
+    },
+    "Mo-99": {
+        "name": "molybdenum-99",
+        "short_name": "Mo-99",
+        "atomic_number": 42,
+        "mass": 95.95,
+        "density": 10.22,
+        "half_life": 65.924,
+        "half_life_unit": "h",
+        "half_life_uncertainty": "6",
+        "parent_nucleus": "99 42 Mo",
+        "parent_energy": "0",
+        "parent_spin_parity": "1/2+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "1357.8 9",
+        "daughter_nucleus": "99 43 Tc"
+    },
+    "Ru-106": {
+        "name": "ruthenium-106",
+        "short_name": "Ru-106",
+        "atomic_number": 44,
+        "mass": 101.07,
+        "density": 12.41,
+        "half_life": 371.8,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "18",
+        "parent_nucleus": "106 44 Ru",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "39.40 21",
+        "daughter_nucleus": "106 45 Rh"
+    },
+    "I-131": {
+        "name": "iodine-131",
+        "short_name": "I-131",
+        "atomic_number": 53,
+        "mass": 126.90447,
+        "density": 4.93,
+        "half_life": 8.0252,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "6",
+        "parent_nucleus": "131 53 I",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "7/2+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "970.8 6",
+        "daughter_nucleus": "131 54 Xe"
+    },
+    "Xe-133": {
+        "name": "xenon-133",
+        "short_name": "Xe-133",
+        "atomic_number": 54,
+        "mass": 131.293,
+        "density": 3.52,
+        "half_life": 2.198,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "13",
+        "parent_nucleus": "133 54 Xe",
+        "parent_energy": "233.221 15",
+        "parent_spin_parity": "11/2-",
+        "decay_mode": {
+            "symbol": "IT",
+            "type": "IT",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "",
+        "daughter_nucleus": "133 54 Xe"
+    },
+    "Cs-137": {
+        "name": "cesium-137",
+        "short_name": "Cs-137",
+        "atomic_number": 55,
+        "mass": 132.90545196,
+        "density": 1.873,
+        "half_life": 30.08,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "9",
+        "parent_nucleus": "137 55 Cs",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "7/2+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "1175.63 17",
+        "daughter_nucleus": "137 56 Ba"
+    },
+    "Ce-144": {
+        "name": "cerium-144",
+        "short_name": "Ce-144",
+        "atomic_number": 58,
+        "mass": 140.116,
+        "density": 6.77,
+        "half_life": 284.91,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "5",
+        "parent_nucleus": "144 58 Ce",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "318.7 8",
+        "daughter_nucleus": "144 59 Pr"
+    },
+    "Lu-177": {
+        "name": "lutetium-177",
+        "short_name": "Lu-177",
+        "atomic_number": 71,
+        "mass": 174.9668,
+        "density": 9.841,
+        "half_life": 6.6443,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "9",
+        "parent_nucleus": "177 71 Lu",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "7/2+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "496.8 8",
+        "daughter_nucleus": "177 72 Hf"
+    },
+    "Ir-192": {
+        "name": "iridium-192",
+        "short_name": "Ir-192",
+        "atomic_number": 77,
+        "mass": 192.217,
+        "density": 22.42,
+        "half_life": 1.45,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "5",
+        "parent_nucleus": "192 77 Ir",
+        "parent_energy": "56.720 5",
+        "parent_spin_parity": "1-",
+        "decay_mode": {
+            "symbol": "IT",
+            "type": "IT",
+            "probability": "99.9825 %"
+        },
+        "gs_gs_q_value": "",
+        "daughter_nucleus": "192 77 Ir"
+    },
+    "Tl-207": {
+        "name": "thallium-207",
+        "short_name": "Tl-207",
+        "atomic_number": 81,
+        "mass": 204.38,
+        "density": 11.85,
+        "half_life": 4.77,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "3",
+        "parent_nucleus": "207 81 Tl",
+        "parent_energy": "0",
+        "parent_spin_parity": "1/2+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "1418 5",
+        "daughter_nucleus": "207 82 Pb"
+    },
+    "Pb-206": {
+        "name": "lead-206",
+        "short_name": "Pb-206",
+        "atomic_number": 82,
+        "mass": 207.2,
+        "density": 11.35,
+        "half_life": 125.0,
+        "half_life_unit": "\u00b5s",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "206 82 Pb",
+        "parent_energy": "2200.14 4",
+        "parent_spin_parity": "7-",
+        "decay_mode": {
+            "symbol": "IT",
+            "type": "IT",
+            "probability": "unknown"
+        },
+        "gs_gs_q_value": "",
+        "daughter_nucleus": "206 82 Pb"
+    },
+    "Pb-207": {
+        "name": "lead-207",
+        "short_name": "Pb-207",
+        "atomic_number": 82,
+        "mass": 207.2,
+        "density": 11.35,
+        "half_life": 0.806,
+        "half_life_unit": "s",
+        "half_life_uncertainty": "5",
+        "parent_nucleus": "207 82 Pb",
+        "parent_energy": "1633.368 5",
+        "parent_spin_parity": "13/2+",
+        "decay_mode": {
+            "symbol": "IT",
+            "type": "IT",
+            "probability": "unknown"
+        },
+        "gs_gs_q_value": "",
+        "daughter_nucleus": "207 82 Pb"
+    },
+    "Pb-209": {
+        "name": "lead-209",
+        "short_name": "Pb-209",
+        "atomic_number": 82,
+        "mass": 207.2,
+        "density": 11.35,
+        "half_life": 3.234,
+        "half_life_unit": "h",
+        "half_life_uncertainty": "7",
+        "parent_nucleus": "209 82 Pb",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "9/2+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "unknown"
+        },
+        "gs_gs_q_value": "644.0 11",
+        "daughter_nucleus": "209 83 Bi"
+    },
+    "Pb-210": {
+        "name": "lead-210",
+        "short_name": "Pb-210",
+        "atomic_number": 82,
+        "mass": 207.2,
+        "density": 11.35,
+        "half_life": 22.2,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "22",
+        "parent_nucleus": "210 82 Pb",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "1.9E-6 4 %"
+        },
+        "gs_gs_q_value": "3792 20",
+        "daughter_nucleus": "206 80 Hg"
+    },
+    "Pb-211": {
+        "name": "lead-211",
+        "short_name": "Pb-211",
+        "atomic_number": 82,
+        "mass": 207.2,
+        "density": 11.35,
+        "half_life": 36.1,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "211 82 Pb",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "9/2+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "1367 6",
+        "daughter_nucleus": "211 83 Bi"
+    },
+    "Pb-212": {
+        "name": "lead-212",
+        "short_name": "Pb-212",
+        "atomic_number": 82,
+        "mass": 207.2,
+        "density": 11.35,
+        "half_life": 10.622,
+        "half_life_unit": "h",
+        "half_life_uncertainty": "7",
+        "parent_nucleus": "212 82 Pb",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "569.1 18",
+        "daughter_nucleus": "212 83 Bi"
+    },
+    "Pb-214": {
+        "name": "lead-214",
+        "short_name": "Pb-214",
+        "atomic_number": 82,
+        "mass": 207.2,
+        "density": 11.35,
+        "half_life": 27.06,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "7",
+        "parent_nucleus": "214 82 Pb",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "1018 11",
+        "daughter_nucleus": "214 83 Bi"
+    },
+    "Bi-209": {
+        "name": "bismuth-209",
+        "short_name": "Bi-209",
+        "atomic_number": 83,
+        "mass": 208.9804,
+        "density": 9.747,
+        "half_life": 20100000000.0,
+        "half_life_unit": "19",
+        "half_life_uncertainty": "y",
+        "parent_nucleus": "209 83 Bi",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "9/2-",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "3137.3 8",
+        "daughter_nucleus": "205 81 Tl"
+    },
+    "Bi-210": {
+        "name": "bismuth-210",
+        "short_name": "Bi-210",
+        "atomic_number": 83,
+        "mass": 208.9804,
+        "density": 9.747,
+        "half_life": 5.012,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "5",
+        "parent_nucleus": "210 83 Bi",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "1-",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "13.2E-5 10 %"
+        },
+        "gs_gs_q_value": "5036.4 8",
+        "daughter_nucleus": "206 81 Tl"
+    },
+    "Bi-211": {
+        "name": "bismuth-211",
+        "short_name": "Bi-211",
+        "atomic_number": 83,
+        "mass": 208.9804,
+        "density": 9.747,
+        "half_life": 2.14,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "211 83 Bi",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "9/2-",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "99.724 4 %"
+        },
+        "gs_gs_q_value": "6750.3 5",
+        "daughter_nucleus": "207 81 Tl"
+    },
+    "Bi-212": {
+        "name": "bismuth-212",
+        "short_name": "Bi-212",
+        "atomic_number": 83,
+        "mass": 208.9804,
+        "density": 9.747,
+        "half_life": 25.0,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "212 83 Bi",
+        "parent_energy": "250",
+        "parent_spin_parity": "(9-)",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "unknown"
+        },
+        "gs_gs_q_value": "6207.26 3",
+        "daughter_nucleus": "208 81 Tl"
+    },
+    "Bi-213": {
+        "name": "bismuth-213",
+        "short_name": "Bi-213",
+        "atomic_number": 83,
+        "mass": 208.9804,
+        "density": 9.747,
+        "half_life": 45.59,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "6",
+        "parent_nucleus": "213 83 Bi",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "9/2-",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "97.860 10 %"
+        },
+        "gs_gs_q_value": "1422 6",
+        "daughter_nucleus": "213 84 Po"
+    },
+    "Bi-214": {
+        "name": "bismuth-214",
+        "short_name": "Bi-214",
+        "atomic_number": 83,
+        "mass": 208.9804,
+        "density": 9.747,
+        "half_life": 19.71,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "214 83 Bi",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "1-",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "99.9790 13 %"
+        },
+        "gs_gs_q_value": "3269 11",
+        "daughter_nucleus": "214 84 Po"
+    },
+    "Po-210": {
+        "name": "polonium-210",
+        "short_name": "Po-210",
+        "atomic_number": 84,
+        "mass": 209.0,
+        "density": 9.32,
+        "half_life": 138.376,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "210 84 Po",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5407.45 7",
+        "daughter_nucleus": "206 82 Pb"
+    },
+    "Po-212": {
+        "name": "polonium-212",
+        "short_name": "Po-212",
+        "atomic_number": 84,
+        "mass": 209.0,
+        "density": 9.32,
+        "half_life": 17.1,
+        "half_life_unit": "ns",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "212 84 Po",
+        "parent_energy": "1476.4 2",
+        "parent_spin_parity": "(8+)",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "unknown"
+        },
+        "gs_gs_q_value": "8954.12 11",
+        "daughter_nucleus": "208 82 Pb"
+    },
+    "Po-213": {
+        "name": "polonium-213",
+        "short_name": "Po-213",
+        "atomic_number": 84,
+        "mass": 209.0,
+        "density": 9.32,
+        "half_life": 3.72,
+        "half_life_unit": "\u00b5s",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "213 84 Po",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "9/2+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "8536.1 26",
+        "daughter_nucleus": "209 82 Pb"
+    },
+    "Po-214": {
+        "name": "polonium-214",
+        "short_name": "Po-214",
+        "atomic_number": 84,
+        "mass": 209.0,
+        "density": 9.32,
+        "half_life": 163.6,
+        "half_life_unit": "\u00b5s",
+        "half_life_uncertainty": "3",
+        "parent_nucleus": "214 84 Po",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "7833.46 6",
+        "daughter_nucleus": "210 82 Pb"
+    },
+    "Po-215": {
+        "name": "polonium-215",
+        "short_name": "Po-215",
+        "atomic_number": 84,
+        "mass": 209.0,
+        "density": 9.32,
+        "half_life": 1.781,
+        "half_life_unit": "ms",
+        "half_life_uncertainty": "4",
+        "parent_nucleus": "215 84 Po",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "9/2+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "99.99977 2 %"
+        },
+        "gs_gs_q_value": "7526.3 8",
+        "daughter_nucleus": "211 82 Pb"
+    },
+    "Po-216": {
+        "name": "polonium-216",
+        "short_name": "Po-216",
+        "atomic_number": 84,
+        "mass": 209.0,
+        "density": 9.32,
+        "half_life": 144.0,
+        "half_life_unit": "ms",
+        "half_life_uncertainty": "6",
+        "parent_nucleus": "216 84 Po",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "6906.4 5",
+        "daughter_nucleus": "212 82 Pb"
+    },
+    "Po-218": {
+        "name": "polonium-218",
+        "short_name": "Po-218",
+        "atomic_number": 84,
+        "mass": 209.0,
+        "density": 9.32,
+        "half_life": 3.097,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "12",
+        "parent_nucleus": "218 84 Po",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "99.980 2 %"
+        },
+        "gs_gs_q_value": "6114.75 9",
+        "daughter_nucleus": "214 82 Pb"
+    },
+    "At-217": {
+        "name": "astatine-217",
+        "short_name": "At-217",
+        "atomic_number": 85,
+        "mass": 210.0,
+        "density": null,
+        "half_life": 32.6,
+        "half_life_unit": "ms",
+        "half_life_uncertainty": "3",
+        "parent_nucleus": "217 85 At",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "9/2-",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "99.993 3 %"
+        },
+        "gs_gs_q_value": "7201.4 12",
+        "daughter_nucleus": "213 83 Bi"
+    },
+    "Rn-219": {
+        "name": "radon-219",
+        "short_name": "Rn-219",
+        "atomic_number": 86,
+        "mass": 222.0,
+        "density": null,
+        "half_life": 3.96,
+        "half_life_unit": "s",
+        "half_life_uncertainty": "1",
+        "parent_nucleus": "219 86 Rn",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "5/2+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "6946.1 3",
+        "daughter_nucleus": "215 84 Po"
+    },
+    "Rn-220": {
+        "name": "radon-220",
+        "short_name": "Rn-220",
+        "atomic_number": 86,
+        "mass": 222.0,
+        "density": null,
+        "half_life": 55.6,
+        "half_life_unit": "s",
+        "half_life_uncertainty": "1",
+        "parent_nucleus": "220 86 Rn",
+        "parent_energy": "0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "6404.67 10",
+        "daughter_nucleus": "216 84 Po"
+    },
+    "Rn-222": {
+        "name": "radon-222",
+        "short_name": "Rn-222",
+        "atomic_number": 86,
+        "mass": 222.0,
+        "density": null,
+        "half_life": 3.8222,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "9",
+        "parent_nucleus": "222 86 Rn",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5590.4 3",
+        "daughter_nucleus": "218 84 Po"
+    },
+    "Fr-221": {
+        "name": "francium-221",
+        "short_name": "Fr-221",
+        "atomic_number": 87,
+        "mass": 223.0,
+        "density": null,
+        "half_life": 4.801,
+        "half_life_unit": "m",
+        "half_life_uncertainty": "6",
+        "parent_nucleus": "221 87 Fr",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "5/2-",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "6457.7 14",
+        "daughter_nucleus": "217 85 At"
+    },
+    "Ra-223": {
+        "name": "radium-223",
+        "short_name": "Ra-223",
+        "atomic_number": 88,
+        "mass": 226.0,
+        "density": null,
+        "half_life": 11.4366,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "28",
+        "parent_nucleus": "223 88 Ra",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "3/2+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5978.99 21",
+        "daughter_nucleus": "219 86 Rn"
+    },
+    "Ra-224": {
+        "name": "radium-224",
+        "short_name": "Ra-224",
+        "atomic_number": 88,
+        "mass": 226.0,
+        "density": null,
+        "half_life": 3.66,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "4",
+        "parent_nucleus": "224 88 Ra",
+        "parent_energy": "0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5788.87 15",
+        "daughter_nucleus": "220 86 Rn"
+    },
+    "Ra-225": {
+        "name": "radium-225",
+        "short_name": "Ra-225",
+        "atomic_number": 88,
+        "mass": 226.0,
+        "density": null,
+        "half_life": 14.9,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "225 88 Ra",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "1/2+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "unknown"
+        },
+        "gs_gs_q_value": "5097 5",
+        "daughter_nucleus": "221 86 Rn"
+    },
+    "Ra-226": {
+        "name": "radium-226",
+        "short_name": "Ra-226",
+        "atomic_number": 88,
+        "mass": 226.0,
+        "density": null,
+        "half_life": 1600.0,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "7",
+        "parent_nucleus": "226 88 Ra",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "4870.62 25",
+        "daughter_nucleus": "222 86 Rn"
+    },
+    "Ra-228": {
+        "name": "radium-228",
+        "short_name": "Ra-228",
+        "atomic_number": 88,
+        "mass": 226.0,
+        "density": null,
+        "half_life": 5.75,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "3",
+        "parent_nucleus": "228 88 Ra",
+        "parent_energy": "0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "45.8 7",
+        "daughter_nucleus": "228 89 Ac"
+    },
+    "Ac-225": {
+        "name": "actinium-225",
+        "short_name": "Ac-225",
+        "atomic_number": 89,
+        "mass": 227.0,
+        "density": null,
+        "half_life": 10.0,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "1",
+        "parent_nucleus": "225 89 Ac",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "(3/2-)",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5935.1 14",
+        "daughter_nucleus": "221 87 Fr"
+    },
+    "Ac-227": {
+        "name": "actinium-227",
+        "short_name": "Ac-227",
+        "atomic_number": 89,
+        "mass": 227.0,
+        "density": null,
+        "half_life": 21.772,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "3",
+        "parent_nucleus": "227 89 Ac",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "3/2-",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "1.3800 36 %"
+        },
+        "gs_gs_q_value": "5042.19 14",
+        "daughter_nucleus": "223 87 Fr"
+    },
+    "Ac-228": {
+        "name": "actinium-228",
+        "short_name": "Ac-228",
+        "atomic_number": 89,
+        "mass": 227.0,
+        "density": null,
+        "half_life": 6.15,
+        "half_life_unit": "h",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "228 89 Ac",
+        "parent_energy": "0",
+        "parent_spin_parity": "3+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "2134 3",
+        "daughter_nucleus": "228 90 Th"
+    },
+    "Th-227": {
+        "name": "thorium-227",
+        "short_name": "Th-227",
+        "atomic_number": 90,
+        "mass": 232.0377,
+        "density": 11.72,
+        "half_life": 18.68,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "9",
+        "parent_nucleus": "227 90 Th",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "(1/2+)",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "6146.43 15",
+        "daughter_nucleus": "223 88 Ra"
+    },
+    "Th-228": {
+        "name": "thorium-228",
+        "short_name": "Th-228",
+        "atomic_number": 90,
+        "mass": 232.0377,
+        "density": 11.72,
+        "half_life": 1.9125,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "9",
+        "parent_nucleus": "228 90 Th",
+        "parent_energy": "0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5520.15 22",
+        "daughter_nucleus": "224 88 Ra"
+    },
+    "Th-229": {
+        "name": "thorium-229",
+        "short_name": "Th-229",
+        "atomic_number": 90,
+        "mass": 232.0377,
+        "density": 11.72,
+        "half_life": 7340.0,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "160",
+        "parent_nucleus": "229 90 Th",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "5/2+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5168.1 12",
+        "daughter_nucleus": "225 88 Ra"
+    },
+    "Th-230": {
+        "name": "thorium-230",
+        "short_name": "Th-230",
+        "atomic_number": 90,
+        "mass": 232.0377,
+        "density": 11.72,
+        "half_life": 75380000000.0,
+        "half_life_unit": "+4",
+        "half_life_uncertainty": "y",
+        "parent_nucleus": "230 90 Th",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "4770.0 15",
+        "daughter_nucleus": "226 88 Ra"
+    },
+    "Th-231": {
+        "name": "thorium-231",
+        "short_name": "Th-231",
+        "atomic_number": 90,
+        "mass": 232.0377,
+        "density": 11.72,
+        "half_life": 25.57,
+        "half_life_unit": "h",
+        "half_life_uncertainty": "8",
+        "parent_nucleus": "231 90 Th",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "5/2+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "391.5 15",
+        "daughter_nucleus": "231 91 Pa"
+    },
+    "Th-232": {
+        "name": "thorium-232",
+        "short_name": "Th-232",
+        "atomic_number": 90,
+        "mass": 232.0377,
+        "density": 11.72,
+        "half_life": 140000000000.0,
+        "half_life_unit": "+9",
+        "half_life_uncertainty": "y",
+        "parent_nucleus": "232 90 Th",
+        "parent_energy": "0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "4081.6 14",
+        "daughter_nucleus": "228 88 Ra"
+    },
+    "Th-234": {
+        "name": "thorium-234",
+        "short_name": "Th-234",
+        "atomic_number": 90,
+        "mass": 232.0377,
+        "density": 11.72,
+        "half_life": 24.1,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "3",
+        "parent_nucleus": "234 90 Th",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "273 3",
+        "daughter_nucleus": "234 91 Pa"
+    },
+    "Pa-231": {
+        "name": "protactinium-231",
+        "short_name": "Pa-231",
+        "atomic_number": 91,
+        "mass": 231.03588,
+        "density": 15.37,
+        "half_life": 32760000000.0,
+        "half_life_unit": "+4",
+        "half_life_uncertainty": "y",
+        "parent_nucleus": "231 91 Pa",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "3/2-",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5150.0 8",
+        "daughter_nucleus": "227 89 Ac"
+    },
+    "Pa-233": {
+        "name": "protactinium-233",
+        "short_name": "Pa-233",
+        "atomic_number": 91,
+        "mass": 231.03588,
+        "density": 15.37,
+        "half_life": 26.975,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "13",
+        "parent_nucleus": "233 91 Pa",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "3/2-",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "570.3 20",
+        "daughter_nucleus": "233 92 U"
+    },
+    "U-233": {
+        "name": "uranium-233",
+        "short_name": "U-233",
+        "atomic_number": 92,
+        "mass": 238.02891,
+        "density": 18.95,
+        "half_life": 1592000000000.0,
+        "half_life_unit": "3",
+        "half_life_uncertainty": "y",
+        "parent_nucleus": "233 92 U",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "5/2+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "4908.5 12",
+        "daughter_nucleus": "229 90 Th"
+    },
+    "U-234": {
+        "name": "uranium-234",
+        "short_name": "U-234",
+        "atomic_number": 92,
+        "mass": 238.02891,
+        "density": 18.95,
+        "half_life": 24550000000.0,
+        "half_life_unit": "+5",
+        "half_life_uncertainty": "y",
+        "parent_nucleus": "234 92 U",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "4859.8 9",
+        "daughter_nucleus": "230 90 Th"
+    },
+    "U-235": {
+        "name": "uranium-235",
+        "short_name": "U-235",
+        "atomic_number": 92,
+        "mass": 238.02891,
+        "density": 18.95,
+        "half_life": 70400000000.0,
+        "half_life_unit": "+8",
+        "half_life_uncertainty": "y",
+        "parent_nucleus": "235 92 U",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "7/2-",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "4678.1 7",
+        "daughter_nucleus": "231 90 Th"
+    },
+    "U-238": {
+        "name": "uranium-238",
+        "short_name": "U-238",
+        "atomic_number": 92,
+        "mass": 238.02891,
+        "density": 18.95,
+        "half_life": 44680000000.0,
+        "half_life_unit": "+9",
+        "half_life_uncertainty": "y",
+        "parent_nucleus": "238 92 U",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "4269.7 29",
+        "daughter_nucleus": "234 90 Th"
+    },
+    "Np-237": {
+        "name": "neptunium-237",
+        "short_name": "Np-237",
+        "atomic_number": 93,
+        "mass": 237.0,
+        "density": 20.25,
+        "half_life": 21440000000.0,
+        "half_life_unit": "+6",
+        "half_life_uncertainty": "y",
+        "parent_nucleus": "237 93 Np",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "5/2+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "4957.3 7",
+        "daughter_nucleus": "233 91 Pa"
+    }
+}
