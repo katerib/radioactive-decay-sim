@@ -138,6 +138,7 @@ async function handleSimulationSubmit(e) {
     }
 
     const result = await response.json();
+    updateDatasetSelection(result.datasets);
     updateSimulationResults(result);
   } catch (error) {
     console.error("Error:", error);
@@ -145,6 +146,32 @@ async function handleSimulationSubmit(e) {
   } finally {
     submitButton.disabled = false;
     submitButton.innerHTML = "Run Simulation";
+  }
+}
+
+function updateDatasetSelection(datasets) {
+  const datasetSelect = document.getElementById("datasets");
+
+  // Clear existing options
+  datasetSelect.innerHTML = "";
+
+  // Check if datasets is empty
+  if (Object.keys(datasets).length === 0) {
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = "No datasets available";
+    option.disabled = true;
+    option.selected = true;
+    datasetSelect.appendChild(option);
+    return;
+  }
+
+  // Iterate over the datasets object
+  for (const [id, data] of Object.entries(datasets)) {
+    const option = document.createElement("option");
+    option.value = id;
+    option.textContent = `Dataset ${id} - Half-Life: ${data.isotope_data[0].half_life} ${data.isotope_data[0].unit}`;
+    datasetSelect.appendChild(option);
   }
 }
 

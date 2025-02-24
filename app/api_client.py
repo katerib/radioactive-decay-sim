@@ -74,8 +74,8 @@ def parse_decay_data(html_content):
     return datasets
 
 
-def SearchIsotope(name):
-    url = f'https://www.nndc.bnl.gov/nudat3/decaysearchdirect.jsp?nuc={name}&unc=NDS'
+def SearchIsotope(isotope_name):
+    url = f'https://www.nndc.bnl.gov/nudat3/decaysearchdirect.jsp?nuc={isotope_name}&unc=NDS'
     response = requests.get(url)
     if response.status_code == 200:
         return parse_decay_data(response.text)

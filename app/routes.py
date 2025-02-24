@@ -48,8 +48,9 @@ def simulate():
     graph = data['checkedBoxes']
     isotope_search = data['isotope_search']
 
+    parsed_data = {}
+
     if isotope_search != '':
-        parsed_data = {}
         isotope_data = SearchIsotope(isotope_search)
 
         for i, entry in enumerate(isotope_data):
@@ -79,8 +80,6 @@ def simulate():
                 ]
             }
     
-        parsed_data = json.dumps(parsed_data, indent = 4)
-
     max_time = isotope.half_life * 4
     time_pts = np.linspace(0, max_time, time_points)
     
@@ -115,7 +114,8 @@ def simulate():
     
     return jsonify({
         'plot': plot_url,
-        'data': data_points
+        'data': data_points,
+        'datasets': parsed_data
     })
 
 @main_bp.route('/about')
