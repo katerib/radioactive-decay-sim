@@ -190,12 +190,8 @@ function updateDatasetSelection(datasets) {
 
   // Check if datasets is empty
   if (Object.keys(datasets).length === 0) {
-    const option = document.createElement("option");
-    option.value = "";
-    option.textContent = "No datasets available";
     option.disabled = true;
     option.selected = true;
-    datasetSelect.appendChild(option);
     return;
   }
 
@@ -215,6 +211,11 @@ function updateDatasetSelection(datasets) {
       }
     }
   }
+
+  const option = document.createElement("option");
+  option.value = "";
+  option.textContent = "None";
+  datasetSelect.appendChild(option);
 }
 
 function showError(message) {
