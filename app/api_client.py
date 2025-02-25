@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import json
 
 def parse_decay_data(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
