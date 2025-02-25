@@ -46,18 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.disabled = !anyChecked;
   }
 
-  const settingsToggle = document.getElementById("settingsToggle");
-  const settingsContent = document.getElementById("settingsContent");
-
-  if (settingsToggle && settingsContent) {
-    settingsToggle.addEventListener("click", () => {
-      const isHidden = settingsContent.style.display === "none";
-      settingsContent.style.display = isHidden ? "block" : "none";
-      settingsToggle.classList.toggle("active");
-    });
-  }
-
-  checkCheckboxes();
+  checkCheckboxes(); // Initial check to disable the button if no checkboxes are checked
 });
 
 function initializeSimulationForm(form) {
@@ -87,7 +76,7 @@ saveImageButton.addEventListener("click", () => {
 async function handleSimulationSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const submitButton = form.querySelector('button[type="submit"]');
+  const submitButton = e.submitter;
 
   submitButton.disabled = true;
   submitButton.innerHTML = '<span class="spinner">↻</span> Running...';
@@ -113,8 +102,9 @@ async function handleSimulationSubmit(e) {
     checkedBoxes: Array.from(form.elements)
       .filter((el) => el.type === "checkbox" && el.checked)
       .map((el) => el.name),
-    isotope_search: form.isotope_search.value,
   };
+
+  const isotope_search = form.isotope_search.value;
 
   // logic for custom isotope
   if (data.isotope === "custom") {
@@ -125,71 +115,42 @@ async function handleSimulationSubmit(e) {
   }
 
   try {
-    const response = await fetch("/simulate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    let response;
+    if (submitButton.id === "runSimulationButton") {
+      response = await fetch("/simulate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    } else if (submitButton.id === "searchButton") {
+      response = await fetch("/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(isotope_search),
+      });
+    }
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const result = await response.json();
-    updateDatasetSelection(result.datasets);
-    updateSimulationResults(result);
+    if (submitButton.id === "runSimulationButton") {
+      updateSimulationResults(result);
+    } else if (submitButton.id === "searchButton") {
+      updateDatasetSelection(result);
+    }
   } catch (error) {
     console.error("Error:", error);
-    showError("An error occurred while running the simulation.");
+    showError("An error occurred while processing the request.");
   } finally {
     submitButton.disabled = false;
-    submitButton.innerHTML = "Run Simulation";
-  }
-}
-
-function updateDatasetSelection(datasets) {
-  const datasetSelect = document.getElementById("datasets");
-
-  // Clear existing options
-  datasetSelect.innerHTML = "";
-
-  // Check if datasets is empty
-  if (Object.keys(datasets).length === 0) {
-    const option = document.createElement("option");
-    option.value = "";
-    option.textContent = "No datasets available";
-    option.disabled = true;
-    option.selected = true;
-    datasetSelect.appendChild(option);
-    return;
-  }
-
-  // Iterate over the datasets object
-  for (const [id, dataset] of Object.entries(datasets)) {
-    // Access the first entry in isotope_data (assuming there's only one)
-    const isotopeData = dataset.isotope_data[0];
-
-    // Iterate over gamma emissions for the current dataset
-    for (const emission of dataset.gamma_emissions) {
-      if (emission.type === "gamma") {
-        // Create a new option for each gamma emission
-        const option = document.createElement("option");
-
-        // Set the display text
-        option.textContent = `Dataset ${id} - Intensity: ${emission.intensity}% - Energy: ${emission.energy} keV - T₁/₂: ${isotopeData.half_life} ${isotopeData.unit}`;
-
-        // Add custom data attributes
-        option.dataset.datasetId = id;
-        option.dataset.energy = emission.energy;
-        option.dataset.intensity = emission.intensity;
-        option.dataset.halfLife = isotopeData.half_life;
-        option.dataset.halfLifeUnit = isotopeData.unit;
-
-        datasetSelect.appendChild(option);
-      }
-    }
+    submitButton.innerHTML =
+      submitButton.id === "runSimulationButton" ? "Run Simulation" : "Search";
   }
 }
 
@@ -219,6 +180,41 @@ function updateSimulationResults(result) {
   dataPointsContainer.style.display = "none";
   const dataPointsButton = document.getElementById("dataPointsButton");
   dataPointsButton.textContent = "Show Data Points";
+}
+
+function updateDatasetSelection(datasets) {
+  const datasetSelect = document.getElementById("datasets");
+
+  // Clear existing options
+  datasetSelect.innerHTML = "";
+
+  // Check if datasets is empty
+  if (Object.keys(datasets).length === 0) {
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = "No datasets available";
+    option.disabled = true;
+    option.selected = true;
+    datasetSelect.appendChild(option);
+    return;
+  }
+
+  for (const entire of Object.values(datasets)) {
+    for (const [id, dataset] of Object.entries(entire)) {
+      const isotopeData = dataset.isotope_data[0];
+      for (const emission of dataset.gamma_emissions) {
+        if (emission.type === "gamma") {
+          const option = document.createElement("option");
+          option.textContent = `Dataset ${id}: Intensity: ${emission.intensity}% - Energy: ${emission.energy} keV - T₁/₂: ${isotopeData.half_life} ${isotopeData.unit}`;
+          option.dataset.energy = emission.energy;
+          option.dataset.intensity = emission.intensity;
+          option.dataset.halfLife = isotopeData.half_life;
+          option.dataset.halfLifeUnit = isotopeData.unit;
+          datasetSelect.appendChild(option);
+        }
+      }
+    }
+  }
 }
 
 function showError(message) {

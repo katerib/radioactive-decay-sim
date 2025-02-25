@@ -46,40 +46,7 @@ def simulate():
     time_points = int(data['time_points'])
     noise = int(data['noise'])
     graph = data['checkedBoxes']
-    isotope_search = data['isotope_search']
 
-    parsed_data = {}
-
-    if isotope_search != '':
-        isotope_data = SearchIsotope(isotope_search)
-
-        for i, entry in enumerate(isotope_data):
-            dataset_id = entry['dataset']
-    
-            hl_unit_array = entry['isotope_data'][i]['half-life'].split() 
-
-            hl = hl_unit_array[0]
-            unit = ''.join(filter(lambda x: x.isalpha(), hl_unit_array[1]))
-
-            parsed_data[dataset_id] = {
-                'gamma_emissions': [
-                    {
-                        'type': emission['type'],
-                        'energy': emission['energy'],
-                        'intensity': emission['intensity'],
-                        'dose': emission['dose'],
-                    }
-                    for emission in entry['gamma_emissions']
-                ],
-                'isotope_data': [
-                    {
-                        'half_life': hl,
-                        'unit': unit,
-                        'decay_mode': entry['isotope_data'][i]['Decay Mode'],
-                    }
-                ]
-            }
-    
     max_time = isotope.half_life * 4
     time_pts = np.linspace(0, max_time, time_points)
     
@@ -115,8 +82,46 @@ def simulate():
     return jsonify({
         'plot': plot_url,
         'data': data_points,
-        'datasets': parsed_data
+        # 'datasets': parsed_data
     })
+
+@main_bp.route('/search', methods=['POST'])
+def search():
+    data = request.json
+    parsed_data = {}
+
+    if data:
+        isotope_data = SearchIsotope(data)
+
+        for i, entry in enumerate(isotope_data):
+            dataset_id = entry['dataset']
+    
+            hl_unit_array = entry['isotope_data'][i]['half-life'].split() 
+
+            hl = hl_unit_array[0]
+            unit = ''.join(filter(lambda x: x.isalpha(), hl_unit_array[1]))
+
+            parsed_data[dataset_id] = {
+                'gamma_emissions': [
+                    {
+                        'type': emission['type'],
+                        'energy': emission['energy'],
+                        'intensity': emission['intensity'],
+                        'dose': emission['dose'],
+                    }
+                    for emission in entry['gamma_emissions']
+                ],
+                'isotope_data': [
+                    {
+                        'half_life': hl,
+                        'unit': unit,
+                        'decay_mode': entry['isotope_data'][i]['Decay Mode'],
+                    }
+                ]
+            }
+
+    return jsonify({'datasets': parsed_data})
+    
 
 @main_bp.route('/about')
 def about():
