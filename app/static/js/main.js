@@ -201,7 +201,7 @@ function updateDatasetSelection(datasets) {
       for (const emission of dataset.gamma_emissions) {
         if (emission.type === "gamma") {
           const option = document.createElement("option");
-          option.textContent = `Dataset ${id}: Intensity: ${emission.intensity}% - Energy: ${emission.energy} keV - T₁/₂: ${isotopeData.half_life} ${isotopeData.unit}`;
+          option.textContent = `Dataset ${id}: γ: ${emission.intensity}% - Energy: ${emission.energy} keV - T₁/₂: ${isotopeData.half_life} ${isotopeData.unit}`;
           option.dataset.energy = emission.energy;
           option.dataset.intensity = emission.intensity;
           option.dataset.halfLife = isotopeData.half_life;
