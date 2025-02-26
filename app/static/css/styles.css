@@ -231,6 +231,9 @@ select:focus {
   cursor: pointer;
   color: var(--label-text);
   font-size: 0.875rem;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .checkbox-container input {

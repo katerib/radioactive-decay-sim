@@ -49,6 +49,23 @@ document.addEventListener("DOMContentLoaded", () => {
   checkCheckboxes(); // Initial check to disable the button if no checkboxes are checked
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const settingsToggle = document.getElementById("settingsToggle");
+    const settingsContent = document.getElementById("settingsContent");
+
+    if (settingsToggle && settingsContent) {
+        settingsToggle.addEventListener("click", () => {
+            const isHidden = settingsContent.style.display === "none";
+            settingsContent.style.display = isHidden ? "block" : "none";
+            settingsToggle.querySelector(".settings-text").textContent = isHidden
+                ? "Hide Advanced Settings"
+                : "Show Advanced Settings";
+        });
+    }
+
+    // Other existing code...
+});
+
 function initializeSimulationForm(form) {
   form.addEventListener("submit", handleSimulationSubmit);
 }
