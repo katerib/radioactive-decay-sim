@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import json
 
 def parse_decay_data(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
@@ -44,15 +45,18 @@ def parse_decay_data(html_content):
                     try:
                         # if line starts with XR, the first two parts are the type
                         if line.startswith('XR'):
+                            idx = 0 
                             rad_type = f'{parts[0]} {parts[1]}'
                             energy = float(parts[2])
                             intensity = float(parts[3].rstrip('%'))
                             dose = float(parts[-1])
                         else:
+                            idx = 0
+                            if len(parts) > 4: idx = 1
                             rad_type = 'gamma'
-                            energy = float(parts[0])
-                            intensity = float(parts[1].rstrip('%'))
-                            dose = float(parts[-1])
+                            energy = float(parts[idx-1])
+                            intensity = float(parts[idx+1].rstrip('%'))
+                            dose = float(parts[-1-idx])
                             
                         gamma_data.append({
                             'type': rad_type,
@@ -69,7 +73,7 @@ def parse_decay_data(html_content):
                 'gamma_emissions': gamma_data,
                 'isotope_data': isotope_data 
             })
-    
+    # print(json.dumps(datasets, indent=4))
     return datasets
 
 
