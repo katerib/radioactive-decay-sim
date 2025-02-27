@@ -3,7 +3,7 @@ import numpy as np
 import io
 import base64
 import matplotlib
-import json
+import re 
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from .api_client import SearchIsotope
@@ -96,7 +96,7 @@ def search():
         for i, entry in enumerate(isotope_data):
             dataset_id = entry['dataset']
     
-            hl_unit_array = entry['isotope_data'][i]['half-life'].split() 
+            hl_unit_array = re.split(r'\+|\-|\s+', entry['isotope_data'][i]['half-life'])
 
             hl = hl_unit_array[0]
             unit = ''.join(filter(lambda x: x.isalpha(), hl_unit_array[1]))
