@@ -73,7 +73,7 @@ def parse_decay_data(html_content):
                 'gamma_emissions': gamma_data,
                 'isotope_data': isotope_data 
             })
-    # print(json.dumps(datasets, indent=4))
+
     return datasets
 
 
