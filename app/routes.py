@@ -100,6 +100,8 @@ def search():
 
             if hl_unit_array[1][0].isnumeric():
                 hl_unit_array[0] += f'^{hl_unit_array[1][0]}'
+                hl_unit_array[0] = hl_unit_array[0].replace('×10^', 'e')
+                hl_unit_array[0] = int(hl_unit_array[0])
                 hl_unit_array[1] = hl_unit_array[1].replace(hl_unit_array[1][0], '')
 
             hl = hl_unit_array[0]
