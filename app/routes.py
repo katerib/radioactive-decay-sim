@@ -98,6 +98,10 @@ def search():
     
             hl_unit_array = re.split(r'\+|\-|\s+', entry['isotope_data'][i]['half-life'])
 
+            if hl_unit_array[1][0].isnumeric():
+                hl_unit_array[0] += f'^{hl_unit_array[1][0]}'
+                hl_unit_array[1] = hl_unit_array[1].replace(hl_unit_array[1][0], '')
+
             hl = hl_unit_array[0]
             unit = ''.join(filter(lambda x: x.isalpha(), hl_unit_array[1]))
 
