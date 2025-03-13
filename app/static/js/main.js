@@ -1,9 +1,11 @@
+const isotopeSelect = document.getElementById("isotope");
+const datasetSelect = document.getElementById("datasets");
+
 document.addEventListener("DOMContentLoaded", () => {
   const simulationForm = document.getElementById("simulationForm");
   const dataPointsButton = document.getElementById("dataPointsButton");
   const dataPointsContainer = document.getElementById("dataPointsContainer");
   const submitButton = simulationForm.querySelector('button[type="submit"]');
-  const isotopeSelect = document.getElementById("isotope");
   const customIsotopeFields = document.getElementById("customIsotopeFields");
 
   if (simulationForm) {
@@ -50,20 +52,29 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const settingsToggle = document.getElementById("settingsToggle");
-    const settingsContent = document.getElementById("settingsContent");
+  const settingsToggle = document.getElementById("settingsToggle");
+  const settingsContent = document.getElementById("settingsContent");
 
-    if (settingsToggle && settingsContent) {
-        settingsToggle.addEventListener("click", () => {
-            const isHidden = settingsContent.style.display === "none";
-            settingsContent.style.display = isHidden ? "block" : "none";
-            settingsToggle.querySelector(".settings-text").textContent = isHidden
-                ? "Hide Advanced Settings"
-                : "Show Advanced Settings";
-        });
-    }
+  if (settingsToggle && settingsContent) {
+    settingsToggle.addEventListener("click", () => {
+      const isHidden = settingsContent.style.display === "none";
+      settingsContent.style.display = isHidden ? "block" : "none";
+      settingsToggle.querySelector(".settings-text").textContent = isHidden
+        ? "Hide Advanced Settings"
+        : "Show Advanced Settings";
+    });
+  }
 
-    // Other existing code...
+  // Other existing code...
+});
+
+datasetSelect.addEventListener("change", (dataset) => {
+  if (!dataset.target.value) {
+    isotopeSelect.disabled = false;
+    isotopeSelect.style.opacity = 1;
+    datasetSelect.disabled = true;
+    datasetSelect.style.opacity = 0.5;
+  }
 });
 
 function initializeSimulationForm(form) {
@@ -149,6 +160,10 @@ async function handleSimulationSubmit(e) {
         },
         body: JSON.stringify(isotope_search),
       });
+      isotopeSelect.disabled = true;
+      isotopeSelect.style.opacity = 0.5;
+      datasetSelect.disabled = false;
+      datasetSelect.style.opacity = 1;
     }
 
     if (!response.ok) {
@@ -200,8 +215,6 @@ function updateSimulationResults(result) {
 }
 
 function updateDatasetSelection(datasets) {
-  const datasetSelect = document.getElementById("datasets");
-
   // Clear existing options
   datasetSelect.innerHTML = "";
 
