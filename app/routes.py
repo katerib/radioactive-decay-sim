@@ -4,12 +4,13 @@ import io
 import base64
 import matplotlib
 import re 
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from .api_client import SearchIsotope
 
+from .api_client import SearchIsotope
 from .decay_simulator import DecaySimulation
 from .isotopes import CARBON_14, RADIUM_226, COBALT_60, IODINE_131, URANIUM_238, CESIUM_137, Isotope
+
+matplotlib.use('Agg')
 
 main_bp = Blueprint('main', __name__)
 
