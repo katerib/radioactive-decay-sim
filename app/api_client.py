@@ -58,12 +58,14 @@ def parse_decay_data(html_content):
                             intensity = float(parts[idx+1].rstrip('%'))
                             dose = float(parts[-1-idx])
                             
-                        gamma_data.append({
-                            'type': rad_type,
-                            'energy': energy,
-                            'intensity': intensity,
-                            'dose': dose
-                        })
+                        if intensity <= 100:
+                            gamma_data.append({
+                                'type': rad_type,
+                                'energy': energy,
+                                'intensity': intensity,
+                                'dose': dose
+                            })
+
                     except ValueError:
                         continue
         

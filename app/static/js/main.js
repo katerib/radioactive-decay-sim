@@ -73,10 +73,11 @@ datasetSelect.addEventListener("change", (event) => {
   if (!event.target.value) {
     isotopeSelect.disabled = false;
     isotopeSelect.style.opacity = 1;
-    datasetSelect.disabled = true;
-    datasetSelect.style.opacity = 0.5;
   } else {
+    isotopeSelect.disabled = true;
+    isotopeSelect.style.opacity = 0.5;
     selectedOption = event.target.selectedOptions[0]; // Get the selected <option> element
+    console.log();
   }
 });
 
@@ -146,9 +147,9 @@ async function handleSimulationSubmit(e) {
   }
 
   // logic for selected dataset isotope 
-  if (isotopeSelect.disabled) {
+  if (selectedOption) {
     data.isotope = "custom"
-    data.custom_name = "Dataset";
+    data.custom_name = `${isotope_search} - ${selectedOption.value.split(":")[0].trim()}`;
     data.custom_gamma = selectedOption.dataset.intensity;
     data.custom_half_life = selectedOption.dataset.halfLife;
     data.custom_half_life_unit = selectedOption.dataset.halfLifeUnit;
