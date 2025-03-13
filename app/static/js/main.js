@@ -1,5 +1,6 @@
 const isotopeSelect = document.getElementById("isotope");
 const datasetSelect = document.getElementById("datasets");
+let selectedOption;
 
 document.addEventListener("DOMContentLoaded", () => {
   const simulationForm = document.getElementById("simulationForm");
@@ -68,12 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Other existing code...
 });
 
-datasetSelect.addEventListener("change", (dataset) => {
-  if (!dataset.target.value) {
+datasetSelect.addEventListener("change", (event) => {
+  if (!event.target.value) {
     isotopeSelect.disabled = false;
     isotopeSelect.style.opacity = 1;
     datasetSelect.disabled = true;
     datasetSelect.style.opacity = 0.5;
+  } else {
+    selectedOption = event.target.selectedOptions[0]; // Get the selected <option> element
   }
 });
 
@@ -140,6 +143,15 @@ async function handleSimulationSubmit(e) {
     data.custom_half_life = form.custom_half_life.value;
     data.custom_half_life_unit = form.custom_half_life_unit.value;
     data.custom_gamma = form.custom_gamma.value;
+  }
+
+  // logic for selected dataset isotope 
+  if (isotopeSelect.disabled) {
+    data.isotope = "custom"
+    data.custom_name = "Dataset";
+    data.custom_gamma = selectedOption.dataset.intensity;
+    data.custom_half_life = selectedOption.dataset.halfLife;
+    data.custom_half_life_unit = selectedOption.dataset.halfLifeUnit;
   }
 
   try {
