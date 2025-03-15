@@ -24,6 +24,13 @@ ISOTOPES = {
     'custom': None
 }
 
+def is_input_valid(initial_amount, time_points, noise):
+    return (
+        initial_amount >= 1
+        and 10 <= time_points <= 1000
+        and 0 <= noise <= 20
+    )
+
 @main_bp.route('/')
 def index():
     return render_template('index.html', isotopes=ISOTOPES)
@@ -50,6 +57,9 @@ def simulate():
 
     max_time = isotope.half_life * 4
     time_pts = np.linspace(0, max_time, time_points)
+
+    if not is_input_valid(initial_amount, time_points, noise):
+        return None
     
     sim = DecaySimulation(
         init_amt=initial_amount,
