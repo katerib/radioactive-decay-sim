@@ -1,5 +1,6 @@
-{% extends "base.html" %} {% block title %}Radioactive Decay Simulator{%
-endblock %} {% block content %}
+{% extends "base.html" %} 
+{% block title %}Radioactive Decay Simulator{% endblock %} 
+{% block content %}
 <div class="content-wrapper">
   <div class="header">
     <h1>Radioactive Decay Simulator</h1>
@@ -9,15 +10,17 @@ endblock %} {% block content %}
     <form id="simulationForm">
       <div class="form-grid">
         <div class="form-group">
+
           <label for="isotope">Isotope</label>
           <select id="isotope" name="isotope">
-            {% for id, isotope in isotopes.items() %} {% if id != 'custom' %}
-            <option value="{{ id }}">
-              {{ isotope.name }} (T₁/₂: {{ isotope.half_life }} {{
-              isotope.half_life_unit }}, γ: {{
-              isotope.gamma_emission_probability }}%)
-            </option>
-            {% endif %} {% endfor %}
+            <option value="" disabled selected>Select or search for an isotope</option>
+            {% for id, isotope in isotopes.items() %}
+              {% if id != 'custom' %}
+                <option value="{{ id }}">
+                  {{ isotope.name }} (T₁/₂: {{ isotope.half_life }} {{ isotope.half_life_unit }}, γ: {{ isotope.gamma_emission_probability }}%)
+                </option>
+              {% endif %}
+            {% endfor %}
             <option value="custom">Custom Isotope</option>
           </select>
 
@@ -30,9 +33,7 @@ endblock %} {% block content %}
               placeholder="e.g., Custom-123"
             />
 
-            <label for="custom_half_life" style="margin-top: 15px"
-              >Half-Life Value</label
-            >
+            <label for="custom_half_life" style="margin-top: 15px">Half-Life Value</label>
             <input
               type="number"
               id="custom_half_life"
@@ -41,9 +42,7 @@ endblock %} {% block content %}
               step="0.000001"
             />
 
-            <label for="custom_half_life_unit" style="margin-top: 15px"
-              >Half-Life Unit</label
-            >
+            <label for="custom_half_life_unit" style="margin-top: 15px">Half-Life Unit</label>
             <select id="custom_half_life_unit" name="custom_half_life_unit">
               <option value="s">Seconds</option>
               <option value="d">Days</option>
@@ -64,35 +63,8 @@ endblock %} {% block content %}
               value="0"
             />
           </div>
-
-          <label for="isotope_search" style="margin-top: 20px">
-            Search Isotope
-          </label>
-          <input
-            type="string"
-            id="isotope_search"
-            name="isotope_search"
-            value=""
-          />
-
-          <button type="submit" id="searchButton" style="margin-top: 10px">
-            Search
-          </button>
-
-          <div id="dataset-container" style="margin-top: 20px">
-            <!-- Dataset dropdown -->
-            <label for="datasets">Datasets</label>
-            <select id="datasets" name="datasets" style="opacity: 0.5" disabled="true">
-              <!-- Options will be populated dynamically -->
-              <option value="">None</option>
-            </select>
-
-            <!-- Container for gamma emission dropdowns -->
-            <div id="gamma-container">
-              <!-- Gamma emission dropdowns will be populated dynamically -->
-            </div>
-          </div>
         </div>
+
         <div class="form-group">
           <label for="initial_amount">
             Initial Amount
@@ -107,6 +79,7 @@ endblock %} {% block content %}
             step="1"
           />
         </div>
+
         <div class="form-group">
           <label for="time_points">
             Time Points
@@ -122,6 +95,7 @@ endblock %} {% block content %}
             step="1"
           />
         </div>
+
         <div class="form-group">
           <label for="noise">
             Noise Percentage
@@ -138,26 +112,16 @@ endblock %} {% block content %}
           />
         </div>
       </div>
+
       <div class="plot-settings" id="plot-settings">
         <p class="settings-toggle" id="settingsToggle">
           <span class="settings-icon">⚙️</span>
           <span class="settings-text">Show Advanced Settings</span>
         </p>
-        <div
-          class="settings-content"
-          id="settingsContent"
-          style="display: none"
-        >
-          <p class="settings-text">
-            Select data series to display them on the plot:
-          </p>
+        <div class="settings-content" id="settingsContent" style="display: none">
+          <p class="settings-text">Select data series to display them on the plot:</p>
           <label class="checkbox-container">
-            <input
-              type="checkbox"
-              id="show_remaining"
-              name="remaining"
-              checked
-            />
+            <input type="checkbox" id="show_remaining" name="remaining" checked />
             <span class="checkmark"></span>
             Remaining Material
           </label>
@@ -172,25 +136,23 @@ endblock %} {% block content %}
             Gamma Decay
           </label>
           <label class="checkbox-container">
-            <input
-              type="checkbox"
-              id="show_first_half_life"
-              name="hl"
-              checked
-            />
+            <input type="checkbox" id="show_first_half_life" name="hl" checked />
             <span class="checkmark"></span>
             First Half-Life
           </label>
         </div>
       </div>
+
       <div class="button-container">
         <button type="submit" id="runSimulationButton">Run Simulation</button>
       </div>
     </form>
   </div>
+
   <div id="results" style="display: none">
     <div class="card">
       <h2>Decay Plot</h2>
+      <h3 id="selectedIsotopeDisplay" style="margin-bottom: 1rem; color: var(--primary-blue);"></h3>
       <div class="plot-container">
         <img id="decayPlot" alt="Decay Plot" />
         <div id="plotLoader" class="loading-overlay" style="display: none">
@@ -204,6 +166,7 @@ endblock %} {% block content %}
         <button id="dataPointsButton">Show Data Points</button>
       </div>
     </div>
+
     <div id="dataPointsContainer" class="card hidden">
       <h2>Data Points</h2>
       <div class="table-container">

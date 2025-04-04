@@ -1,3 +1,7 @@
+"""Scrapes decay data from NNDC for selected isotopes and generates static/models/unstable_isotopes.json.
+
+Not needed at runtime."""
+
 import os 
 import re 
 import json
@@ -8,7 +12,7 @@ import unicodedata
 
 from bs4 import BeautifulSoup
 
-from target_isotopes import TARGET_ISOTOPES
+from .target_isotopes import TARGET_ISOTOPES
 
 OUTPUT_FILE = "app/static/data/unstable_isotopes.json"
 
@@ -116,7 +120,7 @@ def extract_from_rows(table=None, element=None, iso_num=None):
     """
     Extracts isotope decay data from an HTML table while handling nested structures and redundant columns.
 
-    TODO: revisit this function to optimize and improve readability 
+    !TODO: revisit this function to optimize and improve readability 
 
     Scraping was complex due to different formats between isotopes.
     Function is lengthy due to the challenges encountered:

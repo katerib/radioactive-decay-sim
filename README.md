@@ -1,6 +1,7 @@
 # Radioactive Decay Simulator
 
 ## Table of Contents
+
 - [Introduction](#introduction)
 - [Overview](#overview)
 - [Key Features](#key-features)
@@ -38,12 +39,12 @@ Radioactive decay is a fundamental process in nuclear physics where unstable ato
 
 *Some ideas, to review--*
 
-- **Half-Life Calculator:** predicts the remaining amount of radioactive substance at any given time
-- **Interactive Decay Curves:** visualizes how radioactive materials change over time
-- **User-Friendly Interface:** makes complex decay calculations simple to understand
-- **Unit Conversion:** supports conversion between common time units
+- **Half-Life Calculator:*-predicts the remaining amount of radioactive substance at any given time
+- **Interactive Decay Curves:*-visualizes how radioactive materials change over time
+- **User-Friendly Interface:*-makes complex decay calculations simple to understand
+- **Unit Conversion:*-supports conversion between common time units
 
-- ? **Decay Chain Modeling:** would be cool to add a visualization of the parent to daughter isotope transformation. Need to figure out how we would even do that though. Can be a later goal.
+- ? **Decay Chain Modeling:*-would be cool to add a visualization of the parent to daughter isotope transformation. Need to figure out how we would even do that though. Can be a later goal.
 
 ## Isotope Selection and Justification
 
@@ -55,45 +56,45 @@ There are three radioactive decay chains found in nature, plus one artificial se
 
 **Decay Chains**
 
-* Uranium Series / Radium Series
+-Uranium Series / Radium Series
 
-  * U-238 → Pb-206
+  -U-238 → Pb-206
   
-  * 4.5 billion year process
+  -4.5 billion year process
 
-  * Significance: most abundant radioactive decay chain, found in uranium ores
+  -Significance: most abundant radioactive decay chain, found in uranium ores
 
-* Thorium Series / Thorium Cascade
+-Thorium Series / Thorium Cascade
 
-  * Th-232 → Pb-208
+  -Th-232 → Pb-208
   
-  * 14 billion year process
+  -14 billion year process
 
-  * Significance: contributes to natural gamma radiation
+  -Significance: contributes to natural gamma radiation
 
-* Actinium Series / Actinium Cascade
+-Actinium Series / Actinium Cascade
 
-  * U-235 → Pb-207
+  -U-235 → Pb-207
   
-  * 700 million year process
+  -700 million year process
 
-  * Significance: U-235 is a key fissile material used in nuclear reactors and bombs
+  -Significance: U-235 is a key fissile material used in nuclear reactors and bombs
 
-* Neptunium Series / Neptunium Cascade, Artificial 
+-Neptunium Series / Neptunium Cascade, Artificial
 
-  * Np-237 → Bi-209
+  -Np-237 → Bi-209
   
-  * 2.1 million year process
+  -2.1 million year process
 
-  * Significance: does not naturally occur on Earth today; Np-237 is a byproduct of nuclear reactors and weapons testing
+  -Significance: does not naturally occur on Earth today; Np-237 is a byproduct of nuclear reactors and weapons testing
 
 **Sources**
 
-* [Actinide Alpha Decay Chains](https://en.wikipedia.org/wiki/Decay_chain#Actinide_alpha_decay_chains)
+-[Actinide Alpha Decay Chains](https://en.wikipedia.org/wiki/Decay_chain#Actinide_alpha_decay_chains)
 
-* [Natural Radioactivity](https://www.sciencedirect.com/topics/physics-and-astronomy/natural-radioactivity#:~:text=Natural%20radioactivity%20refers%20to%20the,or%20longer%20than%20Earth's%20age.)
+-[Natural Radioactivity](https://www.sciencedirect.com/topics/physics-and-astronomy/natural-radioactivity#:~:text=Natural%20radioactivity%20refers%20to%20the,or%20longer%20than%20Earth's%20age.)
 
-* [Natural Decay Chains](https://www.euronuclear.org/glossary/decay-chains-natural/#:~:text=Uranium%2D235%20is%20at%20the,lead%2D208%20is%20the%20shortest.)
+-[Natural Decay Chains](https://www.euronuclear.org/glossary/decay-chains-natural/#:~:text=Uranium%2D235%20is%20at%20the,lead%2D208%20is%20the%20shortest.)
 
 ### II. Medical and Industrial Isotopes
 
@@ -103,29 +104,29 @@ The isotopes in this category are widely used in radiotherapy, imaging, and canc
 
 Some examples of real-world uses for the selected isotopes:
 
-* I-131: thyroid cancer treatment, imaging
+-I-131: thyroid cancer treatment, imaging
 
-* Tc-99m: most widely used medical imaging isotope
+-Tc-99m: most widely used medical imaging isotope
 
-* Co-60: radiotherapy (gamma-ray cancer treatment), industrial sterilization
+-Co-60: radiotherapy (gamma-ray cancer treatment), industrial sterilization
 
-* Cs-137, Sr-90: cancer radiotherapy, food irradiation, industrial applications
+-Cs-137, Sr-90: cancer radiotherapy, food irradiation, industrial applications
 
-* P-32: leukemia and polycythemia vera treatment
+-P-32: leukemia and polycythemia vera treatment
 
-* Y-90, Lu-177: targeted radiotherapy (cancer)
+-Y-90, Lu-177: targeted radiotherapy (cancer)
 
-* Mo-99: decays into Tc-99m
+-Mo-99: decays into Tc-99m
 
-* Ir-192: internal cancer treatment
+-Ir-192: internal cancer treatment
 
 **Sources**
 
-* [Radioisotopes in Medicine](https://world-nuclear.org/information-library/non-power-nuclear-applications/radioisotopes-research/radioisotopes-in-medicine)
+-[Radioisotopes in Medicine](https://world-nuclear.org/information-library/non-power-nuclear-applications/radioisotopes-research/radioisotopes-in-medicine)
 
-* [Appendix AA: List of Some Major Uses of Radioisotopes in the United States](https://www.nrc.gov/docs/ML2130/ML21300A317.pdf)
+-[Appendix AA: List of Some Major Uses of Radioisotopes in the United States](https://www.nrc.gov/docs/ML2130/ML21300A317.pdf)
 
-* [Isotopes in Medicine](https://www.advancingnuclearmedicine.com/knowledgebase/nuclear-medicine-facts/isotopes-in-medicine)
+-[Isotopes in Medicine](https://www.advancingnuclearmedicine.com/knowledgebase/nuclear-medicine-facts/isotopes-in-medicine)
 
 
 ### III. Major Fission Products
@@ -136,23 +137,23 @@ These are the most common byproducts of nuclear fission, especially from nuclear
 
 Some reasons the selected isotopes were included:
 
-* Cs-137, Sr-90: contribute to nuclear reactor waste (high-energy beta decay)
+-Cs-137, Sr-90: contribute to nuclear reactor waste (high-energy beta decay)
 
-* I-131: short-lived, highly radioactive fission product (impacts nuclear accidents like Chernobyl)
+-I-131: short-lived, highly radioactive fission product (impacts nuclear accidents like Chernobyl)
 
-* Xe-133, Kr-85: gaseous fission products that impact reactor monitoring
+-Xe-133, Kr-85: gaseous fission products that impact reactor monitoring
 
-* Ru-106, Ce-144, Zr-95: common in nuclear reactor byproducts and fallout
+-Ru-106, Ce-144, Zr-95: common in nuclear reactor byproducts and fallout
 
 **Sources**
 
-* [Fission Product Nuclear Data (FPND) Vol.III, International Atomic Energy Agency 1974](https://www-nds.iaea.org/publications/tecdocs/iaea-0169-volume3.pdf)
+-[Fission Product Nuclear Data (FPND) Vol.III, International Atomic Energy Agency 1974](https://www-nds.iaea.org/publications/tecdocs/iaea-0169-volume3.pdf)
 
-* [Radioactive Substances in the Environment, U.S. Environmental Protection Agency (EPA)](https://www.epa.gov/sites/default/files/2015-11/documents/partb_8.pdf?)
+-[Radioactive Substances in the Environment, U.S. Environmental Protection Agency (EPA)](https://www.epa.gov/sites/default/files/2015-11/documents/partb_8.pdf?)
 
-* [Fission Product Yield](https://en.wikipedia.org/wiki/Fission_product_yield)
+-[Fission Product Yield](https://en.wikipedia.org/wiki/Fission_product_yield)
 
-* [Nuclear Fission Product](https://en.wikipedia.org/wiki/Nuclear_fission_product)
+-[Nuclear Fission Product](https://en.wikipedia.org/wiki/Nuclear_fission_product)
 
 ## Installation
 
@@ -281,10 +282,11 @@ $$
 The exponential decay equation that models how the amount of radioactive material changes over time. This describes the relationship between the initial amount, decay constant, and time elapsed.
 
 $$
-N(t) = N_0 * e^{-\lambda t}
+N(t) = N_0 -e^{-\lambda t}
 $$
 
 Where:
+
 - N(t) = amount remaining at time t
 - N₀ = initial amount
 - λ = decay constant of radioactive isotope

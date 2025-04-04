@@ -1,3 +1,5 @@
+"""Defines decay series and isotope groups used by the NNDC scraper. Not needed at runtime."""
+
 # Natural Decay Series
 URANIUM_238_SERIES = {
     "U-238", "Th-234", "Pa-234m", "U-234", "Th-230", "Ra-226", 

@@ -1,3 +1,7 @@
+"""Archived version of route logic using hardcoded isotopes and real-time NNDC scraping.
+
+Has since been broken into routes/api and routes/views."""
+
 from flask import Blueprint, render_template, request, jsonify
 import numpy as np
 import io
@@ -6,9 +10,9 @@ import matplotlib
 import re 
 import matplotlib.pyplot as plt
 
-from .api_client import SearchIsotope
-from .decay_simulator import DecaySimulation
-from .isotopes import CARBON_14, RADIUM_226, COBALT_60, IODINE_131, URANIUM_238, CESIUM_137, Isotope
+from legacy.api_client import SearchIsotope
+from app.utils.decay_simulator import DecaySimulation
+from app.static.models.isotopes import CARBON_14, RADIUM_226, COBALT_60, IODINE_131, URANIUM_238, CESIUM_137, Isotope
 
 matplotlib.use('Agg')
 

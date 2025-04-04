@@ -1,3 +1,9 @@
+"""Legacy scraper for retrieving isotope decay and gamma emission data from NNDC.
+
+Used for real-time isotope lookups via NNDC. Has since been replaced with a static dataset (unstable_isotopes.json).
+
+Preserving for when/if we add search functionality back."""
+
 import requests
 from bs4 import BeautifulSoup
 import json
