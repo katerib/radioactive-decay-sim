@@ -1,3 +1,9 @@
+"""Legacy scraper for retrieving isotope decay and gamma emission data from NNDC.
+
+Used for real-time isotope lookups via NNDC. Has since been replaced with a static dataset (unstable_isotopes.json).
+
+Preserving for when/if we add search functionality back."""
+
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -45,22 +51,27 @@ def parse_decay_data(html_content):
                     try:
                         # if line starts with XR, the first two parts are the type
                         if line.startswith('XR'):
+                            idx = 0 
                             rad_type = f'{parts[0]} {parts[1]}'
                             energy = float(parts[2])
                             intensity = float(parts[3].rstrip('%'))
                             dose = float(parts[-1])
                         else:
+                            idx = 0
+                            if len(parts) > 4: idx = 1
                             rad_type = 'gamma'
-                            energy = float(parts[0])
-                            intensity = float(parts[1].rstrip('%'))
-                            dose = float(parts[-1])
+                            energy = float(parts[idx-1])
+                            intensity = float(parts[idx+1].rstrip('%'))
+                            dose = float(parts[-1-idx])
                             
-                        gamma_data.append({
-                            'type': rad_type,
-                            'energy': energy,
-                            'intensity': intensity,
-                            'dose': dose
-                        })
+                        if intensity <= 100:
+                            gamma_data.append({
+                                'type': rad_type,
+                                'energy': energy,
+                                'intensity': intensity,
+                                'dose': dose
+                            })
+
                     except ValueError:
                         continue
         
@@ -70,12 +81,12 @@ def parse_decay_data(html_content):
                 'gamma_emissions': gamma_data,
                 'isotope_data': isotope_data 
             })
-    
+
     return datasets
 
 
-def SearchIsotope(name):
-    url = f'https://www.nndc.bnl.gov/nudat3/decaysearchdirect.jsp?nuc={name}&unc=NDS'
+def SearchIsotope(isotope_name):
+    url = f'https://www.nndc.bnl.gov/nudat3/decaysearchdirect.jsp?nuc={isotope_name}&unc=NDS'
     response = requests.get(url)
     if response.status_code == 200:
         return parse_decay_data(response.text)

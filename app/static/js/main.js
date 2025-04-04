@@ -1,8 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
   const simulationForm = document.getElementById("simulationForm");
+  const isotopeSelect = document.getElementById("isotope");
   const dataPointsButton = document.getElementById("dataPointsButton");
   const dataPointsContainer = document.getElementById("dataPointsContainer");
-  const submitButton = simulationForm.querySelector('button[type="submit"]');
+  const customIsotopeFields = document.getElementById("customIsotopeFields");
+  const saveImageButton = document.getElementById("saveImageButton");
+
+  // Initialize Selectize on the isotope dropdown
+  if (isotopeSelect) {
+    const selectizeInstance = $(isotopeSelect).selectize({
+      create: false,
+      sortField: "text",
+      onChange: (value) => {
+        if (customIsotopeFields) {
+          customIsotopeFields.style.display = value === "custom" ? "block" : "none";
+        }
+      },
+    })[0].selectize;
+
+    // Trigger onChange for the initial selection
+    selectizeInstance.onChange(selectizeInstance.getValue());
+  }
 
   if (simulationForm) {
     initializeSimulationForm(simulationForm);
@@ -14,48 +32,31 @@ document.addEventListener("DOMContentLoaded", () => {
     dataPointsButton.addEventListener("click", () => {
       const isHidden = dataPointsContainer.style.display === "none";
       dataPointsContainer.style.display = isHidden ? "block" : "none";
-      dataPointsButton.textContent = isHidden
-        ? "Hide Data Points"
-        : "Show Data Points";
+      dataPointsButton.textContent = isHidden ? "Hide Data Points" : "Show Data Points";
     });
+  }
+
+  if (saveImageButton) {
+    saveImageButton.addEventListener("click", handleSaveImage);
   }
 
   const checkboxes = document.querySelectorAll("input[type=checkbox]");
-
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-      checkCheckboxes();
-    });
-  });
-
-  function checkCheckboxes() {
-    const anyChecked = Array.from(checkboxes).some(
-      (checkbox) => checkbox.checked
-    );
-    submitButton.disabled = !anyChecked;
-  }
-
-  const settingsToggle = document.getElementById("settingsToggle");
-  const settingsContent = document.getElementById("settingsContent");
-
-  if (settingsToggle && settingsContent) {
-    settingsToggle.addEventListener("click", () => {
-      const isHidden = settingsContent.style.display === "none";
-      settingsContent.style.display = isHidden ? "block" : "none";
-      settingsToggle.classList.toggle("active");
-    });
-  }
-
-  checkCheckboxes(); // Initial check to disable the button if no checkboxes are checked
+  checkboxes.forEach((checkbox) => checkbox.addEventListener("change", checkCheckboxes));
+  checkCheckboxes();
 });
+
+function checkCheckboxes() {
+  const submitButton = document.querySelector("#runSimulationButton");
+  const checkboxes = document.querySelectorAll("input[type=checkbox]");
+  const anyChecked = Array.from(checkboxes).some((c) => c.checked);
+  submitButton.disabled = !anyChecked;
+}
 
 function initializeSimulationForm(form) {
   form.addEventListener("submit", handleSimulationSubmit);
 }
 
-const saveImageButton = document.getElementById("saveImageButton");
-
-saveImageButton.addEventListener("click", () => {
+function handleSaveImage() {
   const plotImg = document.getElementById("decayPlot").src;
   const a = document.createElement("a");
   a.href = plotImg;
@@ -64,6 +65,7 @@ saveImageButton.addEventListener("click", () => {
   a.click();
   document.body.removeChild(a);
 
+  const saveImageButton = document.getElementById("saveImageButton");
   saveImageButton.disabled = true;
   saveImageButton.innerHTML = '<span class="spinner">↻</span> Saving...';
 
@@ -71,15 +73,27 @@ saveImageButton.addEventListener("click", () => {
     saveImageButton.disabled = false;
     saveImageButton.innerHTML = "Save as Image";
   }, 400);
-});
+}
 
 async function handleSimulationSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const submitButton = form.querySelector('button[type="submit"]');
+  const submitButton = e.submitter;
 
   submitButton.disabled = true;
   submitButton.innerHTML = '<span class="spinner">↻</span> Running...';
+
+  if (form.isotope.value === "custom") {
+    const requiredFields = ["custom_name", "custom_half_life", "custom_gamma"];
+    for (const field of requiredFields) {
+      if (!form[field].value) {
+        showError(`Please fill in all custom isotope fields`);
+        submitButton.disabled = false;
+        submitButton.innerHTML = "Run Simulation";
+        return;
+      }
+    }
+  }
 
   const data = {
     isotope: form.isotope.value,
@@ -89,8 +103,14 @@ async function handleSimulationSubmit(e) {
     checkedBoxes: Array.from(form.elements)
       .filter((el) => el.type === "checkbox" && el.checked)
       .map((el) => el.name),
-    isotope_search: form.isotope_search.value,
   };
+
+  if (data.isotope === "custom") {
+    data.custom_name = form.custom_name.value;
+    data.custom_half_life = form.custom_half_life.value;
+    data.custom_half_life_unit = form.custom_half_life_unit.value;
+    data.custom_gamma = form.custom_gamma.value;
+  }
 
   try {
     const response = await fetch("/simulate", {
@@ -109,7 +129,7 @@ async function handleSimulationSubmit(e) {
     updateSimulationResults(result);
   } catch (error) {
     console.error("Error:", error);
-    showError("An error occurred while running the simulation.");
+    showError("An error occurred while processing the request.");
   } finally {
     submitButton.disabled = false;
     submitButton.innerHTML = "Run Simulation";
@@ -142,7 +162,18 @@ function updateSimulationResults(result) {
   dataPointsContainer.style.display = "none";
   const dataPointsButton = document.getElementById("dataPointsButton");
   dataPointsButton.textContent = "Show Data Points";
+
+  // Display isotope name above the plot
+  const isotopeSelect = document.getElementById("isotope");
+  const selectedText = isotopeSelect.options[isotopeSelect.selectedIndex].text;
+  document.getElementById("selectedIsotopeDisplay").textContent = selectedText;
+
+  // Reset Selectize dropdown to placeholder
+  if ($("#isotope")[0].selectize) {
+    $("#isotope")[0].selectize.clear();
+  }
 }
+
 
 function showError(message) {
   const errorDiv = document.createElement("div");

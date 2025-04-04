@@ -1,8 +1,13 @@
-import numpy as np 
+"""Handles radioactive decay simulation, activity calculation, and plotting."""
+
+import numpy as np
 import matplotlib.pyplot as plt
 
 from dataclasses import dataclass
-from .static.css.plot_colors import *
+from ..static.css.plot_colors import *
+
+import matplotlib
+matplotlib.use('Agg')
 
 @dataclass 
 class DecaySimulation:

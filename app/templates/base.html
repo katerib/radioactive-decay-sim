@@ -9,6 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     
+    <!-- Selectize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.default.min.css" />
+
+    <!-- jQuery (required by Selectize) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Selectize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
     {% block head_scripts %}{% endblock %}
@@ -17,11 +26,11 @@
     <div class="page-container">
         <nav>
             <div class="container">
-                    <a href="{{ url_for('main.index') }}" class="nav-brand">
+                    <a href="{{ url_for('views.index') }}" class="nav-brand">
                         Decay Simulator
                     </a>
                 <div class="nav-links">
-                    <a href="{{ url_for('main.about') }}">
+                    <a href="{{ url_for('views.about') }}">
                         About
                     </a>
                 </div>
@@ -47,7 +56,7 @@
         <footer>
             <div class="container">
                 <p>Source code: <a href="https://github.com/katerib/radioactive-decay-sim" target="_blank">GitHub</a></p>
-                <p>Built by <a href="https://github.com/katerib/" target="_blank">Katerib</a> & <a href="https://github.com/bitboody/" target="_blank">Bitboody</a></p>
+                <p>Built by <a href="https://github.com/katerib/" target="_blank">kat</a> & <a href="https://github.com/bitboody/" target="_blank">Bitboody</a></p>
             </div>
         </footer>
     </div>

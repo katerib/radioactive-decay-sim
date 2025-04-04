@@ -1,14 +1,11 @@
-cyan = (0, 184, 217)
-coral = (255, 127, 80)
-yellow = (255, 198, 30)
-grey_400 = (156, 163, 175)
-white = (255, 255, 255)
-table_grey = (55, 65, 81)
+"""Defines RGB color constants for consistent styling in decay plots."""
 
-# Convert rbg to 0-1 range
-cyan = (0/255, 184/255, 217/255)
-coral = (255/255, 127/255, 80/255)
-yellow = (255/255, 198/255, 30/255)
-grey_400 = (156/255, 163/255, 175/255)
+def rgb(r, g, b):
+    return (r/255, g/255, b/255)
+
+cyan = rgb(0, 184, 217)
+coral = rgb(255, 127, 80)
+yellow = rgb(255, 198, 30)
+grey_400 = rgb(156, 163, 175)
 white = (1, 1, 1)
-table_grey = (55/255, 65/255, 81/255)
+table_grey = rgb(55, 65, 81)
