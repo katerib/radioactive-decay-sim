@@ -5,6 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const dataPointsContainer = document.getElementById("dataPointsContainer");
   const customIsotopeFields = document.getElementById("customIsotopeFields");
   const saveImageButton = document.getElementById("saveImageButton");
+  const settingsToggle = document.getElementById("settingsToggle");
+  const settingsContent = document.getElementById("settingsContent");
+
+  if (settingsToggle && settingsContent) {
+    settingsToggle.addEventListener("click", () => {
+      const isHidden = settingsContent.style.display === "none";
+      settingsContent.style.display = isHidden ? "block" : "none";
+      settingsToggle.querySelector(".settings-text").textContent = isHidden
+        ? "Hide Advanced Settings"
+        : "Show Advanced Settings";
+    });
+  }
 
   // Initialize Selectize on the isotope dropdown
   if (isotopeSelect) {
