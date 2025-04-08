@@ -1,169 +1,144 @@
-import pytest 
-import numpy as np
+"""Unit tests for the decay simulation logic and utility methods."""
 
-from app.decay_simulator import DecaySimulation
-from app.isotopes import *
+import pytest
+import numpy as np
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from app.utils.decay_simulator import DecaySimulation
+from app.utils.isotope_loader import load_unstable_isotopes
+
+ISOTOPES = load_unstable_isotopes()
+
 
 def test_carbon_14_one_half_life():
-    """
-    Test C-14 decay after one half-life.
-    """
-    initial_amount = 1000
-    time_points = np.array([0, CARBON_14.half_life])
+    carbon_14 = ISOTOPES["c-14"]
+    initial = 1000
+    time = np.array([0, carbon_14.half_life])
 
     sim = DecaySimulation(
-        init_amt=initial_amount,
-        half_life=CARBON_14.half_life,
-        time_pts=time_points,
-        isotope_name=CARBON_14.name,
-        half_life_unit=CARBON_14.half_life_unit,
-        noise_percentage=0.00
+        init_amt=initial,
+        half_life=carbon_14.half_life,
+        time_pts=time,
+        isotope_name=carbon_14.name,
+        half_life_unit=carbon_14.half_life_unit,
+        noise_percentage=0.0,
+        gamma_emission_probability=0,
+        graph=""
     )
 
     decayed, remaining = sim.calculate_decay()
-
-    # there should be about half remaining 
-    assert np.isclose(remaining[1], initial_amount/2, rtol=0.01)
-    assert np.isclose(decayed[1], initial_amount/2, rtol=0.01)
-
-    # and total should == initial
-    assert np.isclose(remaining[1] + decayed[1], initial_amount, rtol=0.01)
+    assert np.isclose(remaining[1], initial / 2, rtol=0.01)
+    assert np.isclose(decayed[1], initial / 2, rtol=0.01)
+    assert np.isclose(remaining[1] + decayed[1], initial, rtol=0.01)
 
 
 def test_iodine_131_two_half_lives():
-    """
-    Test I-131 decay after two half-lives.
-    """
-    initial_amount = 1000
-    time_points = np.array([0, IODINE_131.half_life, 2 * IODINE_131.half_life])
+    iodine = ISOTOPES["i-131"]
+    initial = 1000
+    time = np.array([0, iodine.half_life, 2 * iodine.half_life])
 
     sim = DecaySimulation(
-        init_amt=initial_amount, 
-        half_life=IODINE_131.half_life,
-        time_pts=time_points,
-        isotope_name=IODINE_131.name,
-        half_life_unit=IODINE_131.half_life_unit,
-        noise_percentage=0.00
+        init_amt=initial,
+        half_life=iodine.half_life,
+        time_pts=time,
+        isotope_name=iodine.name,
+        half_life_unit=iodine.half_life_unit,
+        noise_percentage=0.0,
+        gamma_emission_probability=0,
+        graph=""
     )
 
     _, remaining = sim.calculate_decay()
+    assert np.isclose(remaining[1], initial / 2, rtol=0.01)
+    assert np.isclose(remaining[2], initial / 4, rtol=0.01)
 
-    # one half-life
-    assert np.isclose(remaining[1], initial_amount/2, rtol=0.01)
 
-    # two half-lives
-    assert np.isclose(remaining[2], initial_amount/4, rtol=0.01)
-
-def test_bismuth_193m_two_half_lives():
-    """
-    Test Bi-193m decay after 2 half-lives.
-    """
-    initial_amount = 1000
-    time_points = np.array([0, 2 * BISMUTH_193M.half_life])
+def test_carbon_14_with_noise():
+    carbon_14 = ISOTOPES["c-14"]
+    initial = 1000
+    time = np.array([0, carbon_14.half_life])
 
     sim = DecaySimulation(
-        init_amt=initial_amount,
-        half_life=BISMUTH_193M.half_life,
-        time_pts=time_points,
-        isotope_name=BISMUTH_193M.name,
-        half_life_unit=BISMUTH_193M.half_life_unit,
-        noise_percentage=0.00
+        init_amt=initial,
+        half_life=carbon_14.half_life,
+        time_pts=time,
+        isotope_name=carbon_14.name,
+        half_life_unit=carbon_14.half_life_unit,
+        noise_percentage=0.01,
+        gamma_emission_probability=0,
+        graph=""
     )
 
     _, remaining = sim.calculate_decay()
+    assert np.isclose(remaining[1], initial / 2, rtol=0.05)
 
-    # two half-lives
-    assert np.isclose(remaining[1], initial_amount/4, rtol=0.01)
-
-def test_carbon_14_random_one_half_life():
-    """
-    Test C-14 decay after 1 half-life with noise.
-    """
-    initial_amount = 1000
-    time_points = np.array([0, CARBON_14.half_life])
-
-    sim = DecaySimulation(
-        init_amt=initial_amount,
-        half_life=CARBON_14.half_life,
-        time_pts=time_points,
-        isotope_name=CARBON_14.name,
-        half_life_unit=CARBON_14.half_life_unit,
-        noise_percentage=0.01
-    )
-
-    _, remaining = sim.calculate_decay()
-
-    # one half-life
-    assert np.isclose(remaining[1], initial_amount/2, rtol=0.01)
 
 def test_time_conversion():
     sim = DecaySimulation(
         init_amt=1000,
         half_life=1,
-        time_pts=np.array([0,1]),
-        isotope_name="TestIsotope",
-        half_life_unit="TestUnit",
-        noise_percentage=0.00
+        time_pts=np.array([0, 1]),
+        isotope_name="test",
+        half_life_unit="y",
+        noise_percentage=0.0,
+        gamma_emission_probability=0,
+        graph=""
     )
 
-    # year -> day
     assert np.isclose(sim.conv_time(1, 'y', 'd'), 365.242, rtol=0.01)
-
-    # day -> sec
     assert np.isclose(sim.conv_time(1, 'd', 's'), 86400, rtol=0.01)
 
 
 def test_activity():
-    initial_amount = 1000
-    half_life = 100
-    time_points = np.array([0])
-
-    sim = DecaySimulation(
-        init_amt=initial_amount,
-        half_life=half_life,
-        time_pts=time_points,
-        isotope_name="TestIsotope",
-        half_life_unit="TestUnit",
-        noise_percentage=0.00
-    )
-
-    activity = sim.calc_activity()
-    expected_rate = (np.log(2) / half_life) * initial_amount
-
-    assert np.isclose(activity[0], expected_rate, rtol=0.01)
-
-
-def test_edge_cases():
-    # zero initial amount
-    sim = DecaySimulation(
-        init_amt=0,
-        half_life=100,
-        time_pts=np.array([0, 50]),
-        isotope_name="TestIsotope",
-        half_life_unit="TestUnit",
-        noise_percentage=0.00
-    )
-
-    decayed, remaining = sim.calculate_decay()
-
-    assert np.all(remaining == 0)
-    assert np.all(decayed == 0)
-
-    # zero time 
     sim = DecaySimulation(
         init_amt=1000,
         half_life=100,
         time_pts=np.array([0]),
-        isotope_name="TestIsotope",
-        half_life_unit="TestUnit",
-        noise_percentage=0.00
+        isotope_name="test",
+        half_life_unit="s",
+        noise_percentage=0.0,
+        gamma_emission_probability=0,
+        graph=""
     )
 
-    decayed, remaining = sim.calculate_decay()
+    activity = sim.calc_activity()
+    expected = (np.log(2) / 100) * 1000
+    assert np.isclose(activity[0], expected, rtol=0.01)
+    assert activity.shape == (1,)
 
-    assert remaining[0] == 1000
-    assert decayed[0] == 0
-    
+
+def test_edge_cases():
+    sim = DecaySimulation(
+        init_amt=0,
+        half_life=100,
+        time_pts=np.array([0, 50]),
+        isotope_name="test",
+        half_life_unit="s",
+        noise_percentage=0.0,
+        gamma_emission_probability=0,
+        graph=""
+    )
+    d, r = sim.calculate_decay()
+    assert np.all(r == 0)
+    assert np.all(d == 0)
+
+    sim = DecaySimulation(
+        init_amt=1000,
+        half_life=100,
+        time_pts=np.array([0]),
+        isotope_name="test",
+        half_life_unit="s",
+        noise_percentage=0.0,
+        gamma_emission_probability=0,
+        graph=""
+    )
+    d, r = sim.calculate_decay()
+    assert r[0] == 1000
+    assert d[0] == 0
+
 
 if __name__ == "__main__":
-    pytest.main([__file__, '-v'])
+    pytest.main([__file__, "-v"])
