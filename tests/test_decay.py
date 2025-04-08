@@ -1,4 +1,4 @@
-"""Unit tests for the decay simulation logic and utility methods."""
+"""Unit tests for the decay simulation logic and utility methods. """
 
 import pytest
 import numpy as np
