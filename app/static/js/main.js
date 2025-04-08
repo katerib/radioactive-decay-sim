@@ -107,6 +107,19 @@ async function handleSimulationSubmit(e) {
     }
   }
 
+  if (!form.isotope.value) {
+    showError("Please select an isotope or enter a custom one.");
+    submitButton.disabled = false;
+    submitButton.innerHTML = "Run Simulation";
+  
+    document.getElementById("decayPlot").src = "";
+    document.getElementById("selectedIsotopeDisplay").textContent = "";
+    document.getElementById("results").style.display = "none";
+  
+    return;
+  }
+  
+
   const data = {
     isotope: form.isotope.value,
     initial_amount: form.initial_amount.value,
