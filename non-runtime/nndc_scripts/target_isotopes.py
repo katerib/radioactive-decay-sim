@@ -34,7 +34,14 @@ FISSION_PRODUCTS = {
     "Ce-144", "Zr-95"
 }
 
+# Additional isotopes not included in the above groups
+ADDITIONAL = {
+    "C-14", "Ra-226", "Tc-99m", "Am-241", "Pu-239", "Pu-240", 
+    "Po-210", "Th-230", "I-125", "Sr-89", "Cs-134"
+}
+
 TARGET_ISOTOPES = (
     URANIUM_238_SERIES | THORIUM_232_SERIES | URANIUM_235_SERIES |
-    NEPTUNIUM_237_SERIES | MEDICAL_ISOTOPES | FISSION_PRODUCTS
+    NEPTUNIUM_237_SERIES | MEDICAL_ISOTOPES | FISSION_PRODUCTS |
+    ADDITIONAL
 )

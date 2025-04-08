@@ -12,9 +12,9 @@ import unicodedata
 
 from bs4 import BeautifulSoup
 
-from .target_isotopes import TARGET_ISOTOPES
+from target_isotopes import TARGET_ISOTOPES
 
-OUTPUT_FILE = "app/static/data/unstable_isotopes.json"
+OUTPUT_FILE = "app/static/models/unstable_isotopes.json"
 
 DECAY_TRANSLATIONS = {
     "β -": "beta minus",
@@ -74,19 +74,27 @@ def extract_half_life(raw_value):
     
     Handles:
     - Scientific notation (e.g., "1.51×10 7 s" → "1.51e7 s")
-    - Uncertainty values (e.g., "12.32 y 2" → value: "12.32", unit: "y", uncertainty: "2")
+    - Uncertainty values (e.g., "12.32 y ± 2" → value: 12.32, uncertainty: 2)
+    - Unitless or malformed entries will be marked as "unknown"
     """
-    raw_value = raw_value.replace("\u00d7", "e")
+    if not raw_value:
+        return "unknown", "unknown", "unknown"
 
-    parts = raw_value.split()
+    raw_value = raw_value.replace("\u00d7", "e").replace("×", "e")
+    raw_value = re.sub(r"\s*±\s*", " ", raw_value)
+
+    parts = raw_value.strip().split()
+
     value = parts[0] if parts else "unknown"
-    
-    if re.match(r".*e\d+$", value):
-        value = value.replace("e", "e")
     unit = parts[1] if len(parts) > 1 else "unknown"
     uncertainty = parts[2] if len(parts) > 2 else "unknown"
-    
-    return float(value), unit, uncertainty
+
+    try:
+        value = float(value)
+    except ValueError:
+        value = "unknown"
+
+    return value, unit, uncertainty
 
 
 def extract_text(td):

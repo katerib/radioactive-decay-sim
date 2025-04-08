@@ -865,9 +865,9 @@
         "atomic_number": 88,
         "mass": 226.0,
         "density": null,
-        "half_life": 1600.0,
+        "half_life": 1603.0,
         "half_life_unit": "y",
-        "half_life_uncertainty": "7",
+        "half_life_uncertainty": "8",
         "parent_nucleus": "226 88 Ra",
         "parent_energy": "0.0",
         "parent_spin_parity": "0+",
@@ -876,7 +876,7 @@
             "type": "alpha",
             "probability": "100 %"
         },
-        "gs_gs_q_value": "4870.62 25",
+        "gs_gs_q_value": "4870.70 25",
         "daughter_nucleus": "222 86 Rn"
     },
     "Ra-228": {
@@ -1176,7 +1176,7 @@
             "type": "alpha",
             "probability": "100 %"
         },
-        "gs_gs_q_value": "4859.8 9",
+        "gs_gs_q_value": "4857.5 7",
         "daughter_nucleus": "230 90 Th"
     },
     "U-235": {
@@ -1238,5 +1238,145 @@
         },
         "gs_gs_q_value": "4957.3 7",
         "daughter_nucleus": "233 91 Pa"
+    },
+    "C-14": {
+        "name": "carbon-14",
+        "short_name": "C-14",
+        "atomic_number": 6,
+        "mass": 12.011,
+        "density": 2.2,
+        "half_life": 5700.0,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "30",
+        "parent_nucleus": "14 6 C",
+        "parent_energy": "0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "156.475 4",
+        "daughter_nucleus": "14 7 N"
+    },
+    "Sr-89": {
+        "name": "strontium-89",
+        "short_name": "Sr-89",
+        "atomic_number": 38,
+        "mass": 87.62,
+        "density": 2.54,
+        "half_life": 50.563,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "25",
+        "parent_nucleus": "89 38 Sr",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "5/2+",
+        "decay_mode": {
+            "symbol": "\u03b2 -",
+            "type": "beta minus",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "1500.9 25",
+        "daughter_nucleus": "89 39 Y"
+    },
+    "I-125": {
+        "name": "iodine-125",
+        "short_name": "I-125",
+        "atomic_number": 53,
+        "mass": 126.90447,
+        "density": 4.93,
+        "half_life": 59.4,
+        "half_life_unit": "d",
+        "half_life_uncertainty": "10",
+        "parent_nucleus": "125 53 I",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "5/2+",
+        "decay_mode": {
+            "symbol": "\u03b5",
+            "type": "electron capture",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "185.77 6",
+        "daughter_nucleus": "125 52 Te"
+    },
+    "Cs-134": {
+        "name": "cesium-134",
+        "short_name": "Cs-134",
+        "atomic_number": 55,
+        "mass": 132.90545196,
+        "density": 1.873,
+        "half_life": 2.912,
+        "half_life_unit": "h",
+        "half_life_uncertainty": "2",
+        "parent_nucleus": "134 55 Cs",
+        "parent_energy": "138.7441 26",
+        "parent_spin_parity": "8-",
+        "decay_mode": {
+            "symbol": "IT",
+            "type": "IT",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "",
+        "daughter_nucleus": "134 55 Cs"
+    },
+    "Pu-239": {
+        "name": "plutonium-239",
+        "short_name": "Pu-239",
+        "atomic_number": 94,
+        "mass": 244.0,
+        "density": 19.84,
+        "half_life": 24110.0,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "30",
+        "parent_nucleus": "239 94 Pu",
+        "parent_energy": "0",
+        "parent_spin_parity": "1/2+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5244.50 21",
+        "daughter_nucleus": "235 92 U"
+    },
+    "Pu-240": {
+        "name": "plutonium-240",
+        "short_name": "Pu-240",
+        "atomic_number": 94,
+        "mass": 244.0,
+        "density": 19.84,
+        "half_life": 6561.0,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "7",
+        "parent_nucleus": "240 94 Pu",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "0+",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5255.82 14",
+        "daughter_nucleus": "236 92 U"
+    },
+    "Am-241": {
+        "name": "americium-241",
+        "short_name": "Am-241",
+        "atomic_number": 95,
+        "mass": 243.0,
+        "density": 13.67,
+        "half_life": 432.6,
+        "half_life_unit": "y",
+        "half_life_uncertainty": "6",
+        "parent_nucleus": "241 95 Am",
+        "parent_energy": "0.0",
+        "parent_spin_parity": "5/2-",
+        "decay_mode": {
+            "symbol": "\u03b1",
+            "type": "alpha",
+            "probability": "100 %"
+        },
+        "gs_gs_q_value": "5637.82 12",
+        "daughter_nucleus": "237 93 Np"
     }
 }
