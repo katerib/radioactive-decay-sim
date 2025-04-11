@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
       sortField: "text",
       onChange: (value) => {
         if (customIsotopeFields) {
-          customIsotopeFields.style.display = value === "custom" ? "block" : "none";
+          customIsotopeFields.style.display =
+            value === "custom" ? "block" : "none";
         }
       },
     })[0].selectize;
@@ -44,7 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
     dataPointsButton.addEventListener("click", () => {
       const isHidden = dataPointsContainer.style.display === "none";
       dataPointsContainer.style.display = isHidden ? "block" : "none";
-      dataPointsButton.textContent = isHidden ? "Hide Data Points" : "Show Data Points";
+      dataPointsButton.textContent = isHidden
+        ? "Hide Data Points"
+        : "Show Data Points";
     });
   }
 
@@ -53,7 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const checkboxes = document.querySelectorAll("input[type=checkbox]");
-  checkboxes.forEach((checkbox) => checkbox.addEventListener("change", checkCheckboxes));
+  checkboxes.forEach((checkbox) =>
+    checkbox.addEventListener("change", checkCheckboxes)
+  );
   checkCheckboxes();
 });
 
@@ -111,14 +116,13 @@ async function handleSimulationSubmit(e) {
     showError("Please select an isotope or enter a custom one.");
     submitButton.disabled = false;
     submitButton.innerHTML = "Run Simulation";
-  
+
     document.getElementById("decayPlot").src = "";
     document.getElementById("selectedIsotopeDisplay").textContent = "";
     document.getElementById("results").style.display = "none";
-  
+
     return;
   }
-  
 
   const data = {
     isotope: form.isotope.value,
@@ -183,7 +187,6 @@ function updateSimulationResults(result) {
   const results = document.getElementById("results");
   results.style.display = "block";
 
-  const dataPointsContainer = document.getElementById("dataPointsContainer");
   dataPointsContainer.style.display = "none";
   const dataPointsButton = document.getElementById("dataPointsButton");
   dataPointsButton.textContent = "Show Data Points";
@@ -193,12 +196,34 @@ function updateSimulationResults(result) {
   const selectedText = isotopeSelect.options[isotopeSelect.selectedIndex].text;
   document.getElementById("selectedIsotopeDisplay").textContent = selectedText;
 
+// Create a download link for the simulation data
+const simulationData =
+  "data:text/json;charset=utf-8," +
+  encodeURIComponent(JSON.stringify(result.data, null, 2));
+
+// Remove any existing download link to avoid duplicates
+const existingDownloadLink = document.getElementById("saveSimulationData");
+if (existingDownloadLink) {
+  existingDownloadLink.remove();
+}
+
+// Create a new download link
+const downloadLink = document.createElement("a");
+downloadLink.id = "saveSimulationData";
+downloadLink.href = simulationData;
+downloadLink.download = `${selectedText.split(" ")[0]}_data.json`;
+downloadLink.textContent = "Save as JSON";
+downloadLink.style.marginTop = "10px";
+downloadLink.style.display = "block";
+
+// Append the download link to the container
+document.getElementById("dataPointsContainer").appendChild(downloadLink);
+
   // Reset Selectize dropdown to placeholder
   if ($("#isotope")[0].selectize) {
     $("#isotope")[0].selectize.clear();
   }
 }
-
 
 function showError(message) {
   const errorDiv = document.createElement("div");
